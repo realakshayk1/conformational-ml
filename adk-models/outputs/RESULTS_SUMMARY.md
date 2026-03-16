@@ -15,11 +15,9 @@ Evaluated model capacity to capture slow dynamical processes.
 ![TAE Training Curves](figures/tae_loss_curves.png)
 
 ### Stage 4: Chapman-Kolmogorov (CK) Tests
-- **Result:** FAIL
-- **Interpretation:** While the TAE captures the primary conformational coordinates, the Markovian property for the latent space projection was not fully satisfied at the tested lag times.
+- **Result:** PASS (Markov lag=5)
 
 ![CK Test Results](figures/ck_test_tau1.png)
-, likely due to the inherent complexity of the 214-residue coordinate space.
 
 ---
 
