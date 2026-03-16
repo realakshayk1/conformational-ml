@@ -1,0 +1,9 @@
+numpy
+torch
+MDAnalysis
+deeptime
+scikit-learn
+matplotlib
+seaborn
+tqdm
+p2rank-runtime
