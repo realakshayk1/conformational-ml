@@ -1,0 +1,152 @@
+{
+  "closed": {
+    "1.0": {
+      "mean_bond_length": 3.7732787132263184,
+      "pct_flagged_bonds": 82.0,
+      "mean_rg": 18.21242332458496,
+      "std_rg": 0.23763449490070343,
+      "real_mean_rg": 17.091142654418945,
+      "real_std_rg": 0.48006558418273926,
+      "mean_pairwise_rmsd": 1.6063333749771118,
+      "mean_rmsd_to_target_state": 2.6302602291107178,
+      "mean_rmsd_to_other_states": 1.991574764251709,
+      "conditioning_check": "FAIL"
+    },
+    "3.0": {
+      "mean_bond_length": 4.069261074066162,
+      "pct_flagged_bonds": 100.0,
+      "mean_rg": 17.95775604248047,
+      "std_rg": 0.30514276027679443,
+      "real_mean_rg": 17.091142654418945,
+      "real_std_rg": 0.48006558418273926,
+      "mean_pairwise_rmsd": 2.401643991470337,
+      "mean_rmsd_to_target_state": 3.158531904220581,
+      "mean_rmsd_to_other_states": 3.2038414478302,
+      "conditioning_check": "PASS"
+    },
+    "5.0": {
+      "mean_bond_length": 4.786404609680176,
+      "pct_flagged_bonds": 100.0,
+      "mean_rg": 17.965152740478516,
+      "std_rg": 0.3718692362308502,
+      "real_mean_rg": 17.091142654418945,
+      "real_std_rg": 0.48006558418273926,
+      "mean_pairwise_rmsd": 4.002669334411621,
+      "mean_rmsd_to_target_state": 4.023812294006348,
+      "mean_rmsd_to_other_states": 4.16910982131958,
+      "conditioning_check": "PASS"
+    },
+    "7.0": {
+      "mean_bond_length": 6.392098426818848,
+      "pct_flagged_bonds": 100.0,
+      "mean_rg": 18.504484176635742,
+      "std_rg": 0.39042967557907104,
+      "real_mean_rg": 17.091142654418945,
+      "real_std_rg": 0.48006558418273926,
+      "mean_pairwise_rmsd": 4.433323860168457,
+      "mean_rmsd_to_target_state": 5.695879936218262,
+      "mean_rmsd_to_other_states": 5.8117899894714355,
+      "conditioning_check": "PASS"
+    }
+  },
+  "intermediate": {
+    "1.0": {
+      "mean_bond_length": 3.75156831741333,
+      "pct_flagged_bonds": 59.0,
+      "mean_rg": 18.43936538696289,
+      "std_rg": 0.2192727029323578,
+      "real_mean_rg": 18.367368698120117,
+      "real_std_rg": 0.5606193542480469,
+      "mean_pairwise_rmsd": 1.5761818885803223,
+      "mean_rmsd_to_target_state": 1.6285902261734009,
+      "mean_rmsd_to_other_states": 1.8860862255096436,
+      "conditioning_check": "PASS"
+    },
+    "3.0": {
+      "mean_bond_length": 3.8868508338928223,
+      "pct_flagged_bonds": 93.0,
+      "mean_rg": 18.464284896850586,
+      "std_rg": 0.26941218972206116,
+      "real_mean_rg": 18.367368698120117,
+      "real_std_rg": 0.5606193542480469,
+      "mean_pairwise_rmsd": 2.18503475189209,
+      "mean_rmsd_to_target_state": 2.3097710609436035,
+      "mean_rmsd_to_other_states": 2.6360158920288086,
+      "conditioning_check": "PASS"
+    },
+    "5.0": {
+      "mean_bond_length": 4.203949928283691,
+      "pct_flagged_bonds": 100.0,
+      "mean_rg": 18.619932174682617,
+      "std_rg": 0.3349720537662506,
+      "real_mean_rg": 18.367368698120117,
+      "real_std_rg": 0.5606193542480469,
+      "mean_pairwise_rmsd": 2.3316097259521484,
+      "mean_rmsd_to_target_state": 3.304511785507202,
+      "mean_rmsd_to_other_states": 3.6078600883483887,
+      "conditioning_check": "PASS"
+    },
+    "7.0": {
+      "mean_bond_length": 4.507842063903809,
+      "pct_flagged_bonds": 100.0,
+      "mean_rg": 18.726343154907227,
+      "std_rg": 0.34855133295059204,
+      "real_mean_rg": 18.367368698120117,
+      "real_std_rg": 0.5606193542480469,
+      "mean_pairwise_rmsd": 3.144209384918213,
+      "mean_rmsd_to_target_state": 3.999441146850586,
+      "mean_rmsd_to_other_states": 4.269892692565918,
+      "conditioning_check": "PASS"
+    }
+  },
+  "open": {
+    "1.0": {
+      "mean_bond_length": 3.77537202835083,
+      "pct_flagged_bonds": 70.0,
+      "mean_rg": 18.535228729248047,
+      "std_rg": 0.185325026512146,
+      "real_mean_rg": 19.448688507080078,
+      "real_std_rg": 0.34024783968925476,
+      "mean_pairwise_rmsd": 1.4345405101776123,
+      "mean_rmsd_to_target_state": 1.8075170516967773,
+      "mean_rmsd_to_other_states": 1.577080249786377,
+      "conditioning_check": "FAIL"
+    },
+    "3.0": {
+      "mean_bond_length": 3.8008053302764893,
+      "pct_flagged_bonds": 87.0,
+      "mean_rg": 18.821300506591797,
+      "std_rg": 0.1598123013973236,
+      "real_mean_rg": 19.448688507080078,
+      "real_std_rg": 0.34024783968925476,
+      "mean_pairwise_rmsd": 1.3681875467300415,
+      "mean_rmsd_to_target_state": 1.8948255777359009,
+      "mean_rmsd_to_other_states": 1.9171874523162842,
+      "conditioning_check": "PASS"
+    },
+    "5.0": {
+      "mean_bond_length": 3.888364315032959,
+      "pct_flagged_bonds": 93.0,
+      "mean_rg": 19.075780868530273,
+      "std_rg": 0.16348353028297424,
+      "real_mean_rg": 19.448688507080078,
+      "real_std_rg": 0.34024783968925476,
+      "mean_pairwise_rmsd": 1.6742808818817139,
+      "mean_rmsd_to_target_state": 2.016484498977661,
+      "mean_rmsd_to_other_states": 2.35678768157959,
+      "conditioning_check": "PASS"
+    },
+    "7.0": {
+      "mean_bond_length": 4.375075340270996,
+      "pct_flagged_bonds": 100.0,
+      "mean_rg": 19.31235694885254,
+      "std_rg": 0.15242935717105865,
+      "real_mean_rg": 19.448688507080078,
+      "real_std_rg": 0.34024783968925476,
+      "mean_pairwise_rmsd": 2.1918444633483887,
+      "mean_rmsd_to_target_state": 3.0294482707977295,
+      "mean_rmsd_to_other_states": 3.303344964981079,
+      "conditioning_check": "PASS"
+    }
+  }
+}
