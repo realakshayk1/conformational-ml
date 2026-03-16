@@ -12,9 +12,14 @@ Evaluated model capacity to capture slow dynamical processes.
 - **Best Model Configuration:** τ = 1, lag_time = 1
 - **VAMP-2 Score:** 2.9675 (out of theoretical max 3.0)
 
+![TAE Training Curves](figures/tae_loss_curves.png)
+
 ### Stage 4: Chapman-Kolmogorov (CK) Tests
 - **Result:** FAIL
-- **Interpretation:** While the TAE captures the primary conformational coordinates, the Markovian property for the latent space projection was not fully satisfied at the tested lag times, likely due to the inherent complexity of the 214-residue coordinate space.
+- **Interpretation:** While the TAE captures the primary conformational coordinates, the Markovian property for the latent space projection was not fully satisfied at the tested lag times.
+
+![CK Test Results](figures/ck_test_tau1.png)
+, likely due to the inherent complexity of the 214-residue coordinate space.
 
 ---
 
@@ -25,22 +30,28 @@ Evaluated model capacity to capture slow dynamical processes.
 - **Metric:** Latent projection correlation with PCA PC1: **r = 0.990**.
 - **Result:** Successfully defined a 1D state axis mapping closed (state 0) to open (state 1) conformations.
 
+![GNN Latent Landscape](figures/landscape_gnn.png)
+
 ### Stage 6: Conditional DDPM
 - **Best Validation Loss:** 0.2490 (MSE) at epoch 84.
 - **Fixes Applied:** Implemented global scalar normalization and AdamW stabilization to handle coordinate variance.
+
+![Diffusion Training Loss](figures/diffusion_loss.png)
 
 ---
 
 ## Phase 3: Validation and Analysis
 
 ### Stage 7: Physical Validity (guidance_scale=3.0)
-| State        | Bond Length (\u00c5) | Rg (\u00c5) [Gen] | Rg (\u00c5) [Real] | RMSD to Target (\u00c5) |
+| State        | Bond Length (Å) | Rg (Å) [Gen] | Rg (Å) [Real] | RMSD to Target (Å) |
 |--------------|-------------------|-----------------|------------------|-----------------------|
 | Closed       | 4.07              | 17.96           | 17.09            | 2.63                  |
 | Intermediate | 4.07              | 18.23           | 18.05            | 2.45                  |
 | Open         | 4.08              | 19.46           | 19.64            | 2.15                  |
 
 **Performance:** Guidance scale 3.0 provided the optimal diversity-fidelity tradeoff, recapturing state-specific radii of gyration within ~5% of MD averages.
+
+![CFG Tradeoff Analysis](figures/cfg_tradeoff_open.png)
 
 ### Stage 8: Cryptic Pocket Analysis
 **Method:** PULCHRA full-atom reconstruction + P2Rank detection.
