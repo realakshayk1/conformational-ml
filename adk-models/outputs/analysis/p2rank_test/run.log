@@ -1,0 +1,32 @@
+[INFO] Console - predicting pockets for proteins from dataset [structure_000.pdb]
+[INFO] PredictPocketsRoutine - outdir: /mnt/c/Users/aksha/conformational-ml/adk-models/outputs/analysis/p2rank_test
+[INFO] FeatureSetup - enabledFeatures: [chem, volsite, protrusion, bfactor, atom_table]
+[INFO] Dataset - processing dataset [structure_000.pdb] using 0 threads
+[INFO] Dataset - 
+------------------------------------------------------------------------------------------------------------------------
+processing [structure_000.pdb] (1/1)
+------------------------------------------------------------------------------------------------------------------------
+
+[INFO] Console - processing [structure_000.pdb] (1/1)
+[INFO] Protein - loading protein [/mnt/c/Users/aksha/conformational-ml/adk-models/outputs/pdb/open_gs3.0/structure_000.pdb]
+[INFO] PdbUtils - loading file [/mnt/c/Users/aksha/conformational-ml/adk-models/outputs/pdb/open_gs3.0/structure_000.pdb]
+[INFO] Struct - all groups in chain A: 214
+[INFO] Struct - all groups in chain A: 214
+[INFO] Struct - 214 groups in chain A
+[INFO] Protein - structure atoms: 214
+[INFO] Protein - protein   atoms: 214
+[INFO] Protein - ignoring ligands
+[INFO] FeatureSetup - enabledFeatures: [chem, volsite, protrusion, bfactor, atom_table]
+[INFO] Protein - SAS points: 3996
+[INFO] Protein - exposed protein atoms: 214 of 214
+[INFO] InstancePredictor - Creating WekaInstancePredictor
+[INFO] PocketPredictor - PREDICTING POCKETS.... ====================================
+[INFO] PocketPredictor - SAS POINTS: 3996
+[INFO] PocketPredictor - LIGANDABLE POINTS: 0
+[INFO] PocketPredictor - CLUSTERS: 0
+[INFO] PocketPredictor - FILTERED CLUSTERS: 0
+[INFO] OldPymolRenderer - copying [/mnt/c/Users/aksha/conformational-ml/adk-models/outputs/pdb/open_gs3.0/structure_000.pdb] to [/mnt/c/Users/aksha/conformational-ml/adk-models/outputs/analysis/p2rank_test/visualizations/data/structure_000.pdb]
+[INFO] Console - predicting pockets finished in 0 hours 0 minutes 8.591 seconds
+[INFO] Console - results saved to directory [/mnt/c/Users/aksha/conformational-ml/adk-models/outputs/analysis/p2rank_test]
+[INFO] Console - 
+[INFO] Console - Finished successfully in 0 hours 0 minutes 10.032 seconds.

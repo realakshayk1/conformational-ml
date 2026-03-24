@@ -1,0 +1,350 @@
+# AdK Conformational States — Agent PRD
+> Drop this into every new Antigravity agent session as a Knowledge Item.
+> Last updated: March 2026
+
+---
+
+## 1. What This Project Is
+
+A computational biology ML project that learns low-dimensional representations of protein
+conformational space from molecular dynamics (MD) trajectories, then trains a conditional
+diffusion model to generate physically valid structural ensembles per conformational state.
+
+The two core scientific questions:
+1. Can we learn a latent representation of protein conformational space that captures
+   biologically meaningful states better than naive methods (PCA, UMAP)?
+2. Can we train a diffusion model conditioned on those states to generate structural
+   ensembles that reveal transient cryptic binding sites invisible to static analysis?
+
+**Protein:** Adenylate Kinase (AdK) — well-documented open/closed/intermediate conformational
+landscape driven by LID and AMPbind domain movements. Ground truth states are established
+in the literature, making validation straightforward.
+
+**Dataset:** Three complementary AdK datasets, all free, all one-line downloads via
+MDAnalysisData. Use all three combined — ~40,000–60,000+ frames total, which is a
+reasonable training set for a diffusion model.
+
+```python
+import MDAnalysisData as data
+
+eq    = data.datasets.fetch_adk_equilibrium()         # 4,187 frames, 161 MB — equilibrium sampling
+dims  = data.datasets.fetch_adk_transitions_DIMS()    # 200 transition trajectories, 539 MB
+froda = data.datasets.fetch_adk_transitions_FRODA()   # 200 transition trajectories, 539 MB
+```
+
+- **Equilibrium:** 1 µs simulation, dense sampling of stable states
+- **DIMS + FRODA transitions:** 200 independently generated closed→open transition trajectories
+  each, providing dense coverage of intermediate states that equilibrium simulation undersamples
+
+**Critical:** The three datasets use slightly different simulation conditions. Always
+re-align all trajectories to a single common reference structure before concatenating.
+See Section 5.3 for the alignment pattern.
+
+---
+
+## 2. Tech Stack
+
+| Layer | Technology |
+|---|---|
+| MD processing | MDAnalysis, MDAnalysisData |
+| ML framework | PyTorch |
+| Graph networks | PyTorch Geometric |
+| MSM / validation | PyEMMA or deeptime |
+| Pocket detection | fpocket / MDpocket |
+| Visualization | NGLview, matplotlib, seaborn |
+| Numerics | numpy, scipy |
+| Environment | conda, Python 3.10 |
+| IDE | Google Antigravity |
+
+---
+
+## 3. Project Structure
+
+```
+adk-conformational/
+  data/                        → raw trajectory files (never committed to git)
+  notebooks/                   → exploratory analysis and figure generation
+  src/
+    preprocessing/
+      load_trajectory.py       → MDAnalysis loading, alignment, Cα extraction
+      featurize.py             → pairwise Cα distances, dihedral angles
+      split.py                 → temporal train/val/test splitting
+    models/
+      tae.py                   → TimelaggedAutoencoder
+      gnn.py                   → Graph neural network encoder
+      diffusion.py             → ConformationalDiffusionModel (DDPM)
+      embeddings.py            → SinusoidalPositionEmbeddings
+    analysis/
+      msm.py                   → Markov state model, CK test, VAMP-2 scoring
+      pockets.py               → fpocket batch runner, pocket aggregation
+      metrics.py               → RMSD, Ramachandran, radius of gyration
+  outputs/
+    figures/                   → saved plots
+    checkpoints/               → saved model weights
+    ensembles/                 → generated structural ensembles per state
+  requirements.txt
+  README.md
+```
+
+---
+
+## 4. Two-Phase Architecture
+
+### Phase 1 — Representation Learning (Weeks 1–5)
+Learn a low-dimensional latent space that captures biologically meaningful conformational
+states. Must pass a validation gate before Phase 2 begins.
+
+**Stage 1 — Baselines:** PCA + UMAP on Cα distance matrix, k-means clustering.
+Validates that known AdK open/closed states are recoverable.
+
+**Stage 2 — Time-lagged Autoencoder (TAE):** Encodes frame t, decodes frame t+τ.
+Forces latent space to capture slow dynamical modes rather than fast local fluctuations.
+Sweep lag time τ as a hyperparameter.
+
+**Stage 3 — Graph Neural Network (GNN):** Residues as nodes, edges connect residues
+within 8Å cutoff. Message passing captures long-range allosteric communication.
+GNN latent vector becomes the conditioning signal for Phase 2.
+
+**Stage 4 — SE(3)-Equivariant Network (optional):** Replace GNN with equivariant
+network using e3nn. Physically correct inductive bias. Attempt only after Phase 2 baseline.
+
+**Phase 1 Decision Gate — must pass all three before starting Phase 2:**
+- Learned clusters correspond to known AdK biological states with reasonable purity
+- Chapman-Kolmogorov (CK) test passes at some lag time
+- GNN latent space shows distinct interpretable conformational basins
+
+### Phase 2 — Conditional Diffusion (Weeks 6–10)
+Train a DDPM where the denoising network is conditioned on the conformational state
+vector from the frozen Phase 1 GNN encoder. Generate structural ensembles per state.
+Use ensembles for cryptic binding site analysis.
+
+**Stage 5 — Conditional DDPM:** Forward/reverse process on Cα coordinates conditioned
+on GNN latent vector.
+
+**Stage 6 — Classifier-Free Guidance (CFG):** Drop conditioning with p=0.1 during
+training. At inference, blend conditional and unconditional predictions with a
+guidance_scale hyperparameter.
+
+**Stage 7 — Ensemble Generation + Validation:** Generate 100–500 structures per state.
+Validate with RMSD, Ramachandran, radius of gyration, pairwise diversity.
+
+**Stage 8 — Cryptic Site Analysis:** Run fpocket on full ensembles. Identify pockets
+present in >20% of one state but <5% of others. Cross-reference with AdK literature.
+
+---
+
+## 5. Non-Negotiable Methodology Rules
+
+These are scientific correctness requirements. Violating them produces invalid results.
+
+### 5.1 Never Shuffle Trajectory Frames
+**Always split temporally:** train on first 70% of simulation time, val on next 15%,
+test on final 15%. Consecutive frames are correlated — random shuffling inflates
+validation performance and produces meaningless results. This applies to all stages.
+
+```python
+# CORRECT
+n = len(trajectory)
+train = trajectory[:int(0.7 * n)]
+val   = trajectory[int(0.7 * n):int(0.85 * n)]
+test  = trajectory[int(0.85 * n):]
+
+# WRONG — never do this
+from sklearn.model_selection import train_test_split
+train, test = train_test_split(trajectory)  # BAD
+```
+
+### 5.2 Freeze GNN Encoder During Diffusion Training
+The GNN encoder is trained in Phase 1 to identify conformational states. When training
+the diffusion model in Phase 2, the GNN weights must be frozen. The GNN is a fixed
+feature extractor, not a jointly optimized component.
+
+```python
+# CORRECT — freeze before diffusion training loop
+for param in gnn_encoder.parameters():
+    param.requires_grad = False
+```
+
+### 5.3 Align Trajectory Before Featurization
+Always align all frames to a reference structure (e.g. first frame) to remove global
+rotation and translation before extracting any features. Failure to align means your
+model learns camera motion, not protein motion.
+
+```python
+# In MDAnalysis
+protein = u.select_atoms("protein and name CA")
+ref = u.select_atoms("protein and name CA")  # reference = frame 0
+for ts in u.trajectory:
+    protein.align_to(ref, select="protein and name CA")
+```
+
+### 5.4 Use Pairwise Cα Distances as Primary Features
+Raw Cα coordinates are not rotation/translation invariant. Pairwise distances are.
+Use the upper triangle of the pairwise distance matrix as the feature vector for all
+non-GNN models (PCA, UMAP, TAE). The GNN uses coordinates directly since it handles
+invariance via its architecture.
+
+### 5.5 Validate Before Advancing Stages
+Do not start Stage N+1 until Stage N produces interpretable results. A broken baseline
+with a diffusion model on top is worse than a clean baseline alone. At each stage,
+produce a visualization and a number before moving on.
+
+---
+
+## 6. Key Hyperparameters to Sweep
+
+| Hyperparameter | Stage | Values to Try | What It Controls |
+|---|---|---|---|
+| lag time τ | TAE (Stage 2) | 1, 5, 10, 20, 50 ns | Slow vs fast dynamical modes |
+| latent_dim | TAE, GNN | 2, 4, 8 | Dimensionality of conformational space |
+| edge cutoff | GNN | 6Å, 8Å, 10Å | Graph connectivity |
+| T (diffusion steps) | DDPM | 500, 1000 | Forward process length |
+| guidance_scale | CFG | 1.0, 3.0, 5.0, 7.0 | State specificity vs ensemble diversity |
+| k (clusters) | k-means | 3, 5, 7 | Number of conformational states |
+
+---
+
+## 7. Evaluation Metrics
+
+### Phase 1
+- **VAMP-2 score** — higher is better; measures quality of slow mode capture
+- **Known state recovery** — do k-means clusters align with AdK open/closed literature states?
+- **CK test** — does the model pass Chapman-Kolmogorov at some lag time?
+- **Implied timescales** — plot as function of τ to identify slow modes
+
+### Phase 2
+- **Mean RMSD to real frames** — generated structures for state k should RMSD closer to real
+  frames assigned to state k than to frames assigned to other states
+- **Ramachandran % allowed** — phi/psi angles must fall in allowed regions
+- **Radius of gyration** — distribution should match real trajectory frames for that state
+- **Pairwise RMSD within ensemble** — too low = mode collapse; too high = ignoring conditioning
+- **Cryptic pocket frequency** — fraction of ensemble structures showing each detected pocket
+
+---
+
+## 8. Physical Validity Checks (Do Not Skip)
+
+Before reporting any diffusion results, run all three checks on generated ensembles:
+
+1. **Ramachandran analysis** — compute phi/psi for all generated structures using MDAnalysis
+   or scipy. Flag any structure where >5% of residues fall in disallowed regions.
+
+2. **Radius of gyration** — compare distribution of Rg across generated ensemble to Rg
+   distribution of real trajectory frames for that conformational state.
+
+3. **Bond geometry** — check Cα–Cα virtual bond lengths (should be ~3.8Å). Degenerate
+   generations that look like coordinates but aren't physical will fail this check.
+
+These checks catch failure modes that RMSD alone misses. A structure can have reasonable
+RMSD to a reference but be physically impossible.
+
+---
+
+## 9. Agent Onboarding Protocol (Do This First, Every Time)
+
+Before writing any code on a task, an agent must:
+
+```
+1. Read the relevant src/ files for the stage you're working on
+2. Read two adjacent/completed stage files to understand existing patterns
+3. Check outputs/checkpoints/ for any saved model state relevant to your stage
+4. Summarize your understanding:
+   - "The existing featurization pipeline produces X shaped tensors"
+   - "The current train/val/test split is done in split.py using temporal ordering"
+   - "The GNN encoder outputs a Z-dimensional latent vector"
+5. Only then begin implementation
+```
+
+**If you skip steps 1–4, stop and go back. Never write code against assumptions
+about data shapes or interfaces — verify them first.**
+
+---
+
+## 10. Prompt Template for New Agent Sessions
+
+Copy this at the start of every new Antigravity agent session:
+
+```
+You are working on the AdK Conformational States ML project — a computational biology
+project that learns protein conformational states from MD trajectories and trains a
+conditional diffusion model to generate structural ensembles.
+
+Before writing any code:
+1. Read the src/ files relevant to this task to understand existing interfaces and patterns.
+2. Check what stage of the project is complete by reading outputs/checkpoints/.
+3. Summarize data shapes and interfaces before implementing.
+
+Scientific rules you must follow without exception:
+- NEVER randomly shuffle trajectory frames for train/val/test splitting — always split temporally
+  (70% train / 15% val / 15% test by simulation time)
+- NEVER jointly train the GNN encoder during diffusion training — freeze its weights
+- ALWAYS align trajectory frames to a reference before featurization
+- ALWAYS use pairwise Cα distances as features for non-GNN models (not raw coordinates)
+- ALWAYS run Ramachandran + radius of gyration + bond geometry checks on generated ensembles
+- Do NOT advance to the next stage until the current stage produces interpretable results
+
+Environment:
+- Python 3.10, conda env named "adk"
+- PyTorch (CPU), PyTorch Geometric, MDAnalysis, PyEMMA
+- All outputs go in outputs/, all model definitions go in src/models/
+
+Task: [PASTE TASK HERE]
+```
+
+---
+
+## 11. Current Status Tracker
+
+Update this section manually as stages complete.
+
+| Stage | Status | Key Result |
+|---|---|---|
+| 1 — PCA/UMAP baselines | Complete | Open/Closed states recovered |
+| 2 — Time-lagged autoencoder | Complete | VAMP-2 = 2.97 |
+| 3 — GNN encoder | Complete | r = 0.99 with PC1 |
+| 4 — SE(3)-equivariant (optional) | Not started | — |
+| Phase 1 decision gate | Pass | All criteria met |
+| 5 — Conditional DDPM | Complete | Best val loss 0.25 |
+| 6 — Classifier-free guidance | Complete | guidance_scale=3.0 optimal |
+| 7 — Ensemble generation + validation | Complete | Rg within 5% of MD |
+| 8 — Cryptic site analysis | Complete | Symmetrically conserved pockets |
+
+---
+
+## 12. Known Gotchas
+
+- **Cross-dataset alignment is mandatory.** The equilibrium, DIMS, and FRODA datasets
+  use slightly different simulation conditions. Before concatenating into a single training
+  set, re-align every frame from every dataset to a single common reference structure
+  (use the first frame of the equilibrium trajectory as the reference). Skipping this
+  means your model learns dataset-of-origin artifacts, not protein conformational change.
+  ```python
+  # Pattern: align each universe to a shared reference before featurizing
+  ref_atoms = u_eq.select_atoms("protein and name CA")
+  for u in [u_eq, u_dims, u_froda]:
+      mobile = u.select_atoms("protein and name CA")
+      for ts in u.trajectory:
+          mobile.align_to(ref_atoms, select="protein and name CA")
+  ```
+- **Temporal split applies per dataset, not globally.** When splitting train/val/test,
+  split each trajectory temporally within itself before concatenating splits together.
+  Do not pool all frames then split — that leaks correlated frames across splits.
+- **DIMS and FRODA are transition trajectories, not equilibrium.** They oversample the
+  transition pathway relative to real dynamics. This is useful for covering intermediate
+  states but means the combined dataset is not a statistically unbiased equilibrium
+  ensemble. Account for this when interpreting MSM results — weight or stratify if needed.
+- **PyEMMA can conflict on newer Python versions.** If install fails, try `deeptime` as
+  a drop-in replacement for MSM and VAMP-2 scoring.
+- **Notation collision:** `x_t` in the trajectory context means frame at time t.
+  `x_t` in the diffusion context means coordinates at diffusion timestep t. Use
+  `x_traj` and `x_diff` in code to avoid silent bugs.
+- **fpocket requires a PDB file per structure.** Write a batch export utility early —
+  you'll need to run it on hundreds of structures in Stage 8.
+- **Guidance scale tradeoff:** Higher guidance_scale → tighter state specificity but
+  less diversity. Lower → more diversity but weaker conditioning. Plot this tradeoff
+  explicitly; it is a result, not a problem to eliminate.
+
+---
+
+*This document is the source of truth for agent context on this project.
+Update the Status Tracker at the end of each working session.*

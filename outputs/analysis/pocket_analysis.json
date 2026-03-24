@@ -1,0 +1,69 @@
+{
+  "generated": {
+    "closed": {
+      "pocket_freq": 0.91,
+      "high_conf_freq": 0.63,
+      "cryptic": false,
+      "status": "STATE-ENRICHED"
+    },
+    "intermediate": {
+      "pocket_freq": 0.74,
+      "high_conf_freq": 0.32,
+      "cryptic": false,
+      "status": "STATE-ENRICHED"
+    },
+    "open": {
+      "pocket_freq": 0.9,
+      "high_conf_freq": 0.55,
+      "cryptic": false,
+      "status": "STATE-ENRICHED"
+    }
+  },
+  "real": {
+    "closed": {
+      "pocket_freq": 0.8
+    },
+    "intermediate": {
+      "pocket_freq": 0.6
+    },
+    "open": {
+      "pocket_freq": 0.95
+    }
+  },
+  "cryptic_pockets_found": false,
+  "state_specific_findings": [],
+  "pocket_geometry": {
+    "closed": {
+      "mean_center": [
+        -1.4225164835164836,
+        1.526373626373626,
+        2.4000538461538463
+      ],
+      "std_center": 3.583725193041785,
+      "mean_score": 16.62912087912088
+    },
+    "intermediate": {
+      "mean_center": [
+        -1.9211418918918917,
+        3.1764324324324336,
+        2.7493851351351353
+      ],
+      "std_center": 2.8971788444003526,
+      "mean_score": 13.928108108108109
+    },
+    "open": {
+      "mean_center": [
+        0.1410677777777779,
+        3.0639600000000007,
+        3.0437611111111114
+      ],
+      "std_center": 3.377518088953467,
+      "mean_score": 14.692555555555554
+    },
+    "inter_state_displacement_angstroms": {
+      "closed_vs_open": 2.2854598315191166,
+      "closed_vs_intermediate": 1.758793254135087,
+      "intermediate_vs_open": 2.086148600883495
+    }
+  }
+}

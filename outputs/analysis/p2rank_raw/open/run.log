@@ -1,0 +1,41 @@
+[INFO] Console - predicting pockets for proteins from dataset [structure_099.rebuilt.pdb]
+[INFO] PredictPocketsRoutine - outdir: /mnt/c/Users/aksha/conformational-ml/adk-models/outputs/analysis/p2rank_raw/open
+[INFO] FeatureSetup - enabledFeatures: [chem, volsite, protrusion, bfactor, atom_table]
+[INFO] Dataset - processing dataset [structure_099.rebuilt.pdb] using 0 threads
+[INFO] Dataset - 
+------------------------------------------------------------------------------------------------------------------------
+processing [structure_099.rebuilt.pdb] (1/1)
+------------------------------------------------------------------------------------------------------------------------
+
+[INFO] Console - processing [structure_099.rebuilt.pdb] (1/1)
+[INFO] Protein - loading protein [/mnt/c/Users/aksha/conformational-ml/adk-models/outputs/pdb/open/structure_099.rebuilt.pdb]
+[INFO] PdbUtils - loading file [/mnt/c/Users/aksha/conformational-ml/adk-models/outputs/pdb/open/structure_099.rebuilt.pdb]
+[INFO] Struct - all groups in chain  : 214
+[INFO] Struct - all groups in chain  : 214
+[INFO] Struct - 214 groups in chain  
+[INFO] Protein - structure atoms: 1071
+[INFO] Protein - protein   atoms: 1071
+[INFO] Protein - ignoring ligands
+[INFO] FeatureSetup - enabledFeatures: [chem, volsite, protrusion, bfactor, atom_table]
+[INFO] Protein - SAS points: 3968
+[INFO] Protein - exposed protein atoms: 1053 of 1071
+[INFO] InstancePredictor - Creating WekaInstancePredictor
+[INFO] SLinkClusterer - clustering [91] elements
+[INFO] SLinkClusterer - clusters: [id:24( 44 ), id:36( 6 ), id:41( 2 ), id:49( 7 ), id:53( 12 ), id:66( 2 ), id:68( 8 ), id:78( 10 )]
+[INFO] SLinkClusterer - clusters together: 91 / 91
+[INFO] PocketPredictor - PREDICTING POCKETS.... ====================================
+[INFO] PocketPredictor - SAS POINTS: 3968
+[INFO] PocketPredictor - LIGANDABLE POINTS: 91
+[INFO] PocketPredictor - CLUSTERS: 8
+[INFO] PocketPredictor - FILTERED CLUSTERS: 6
+[INFO] PocketPredictor - pocket 1 -  surf_atoms:  56   points:  44   score:   14.7
+[INFO] PocketPredictor - pocket 2 -  surf_atoms:  34   points:  12   score:    6.1
+[INFO] PocketPredictor - pocket 3 -  surf_atoms:  26   points:   7   score:    4.5
+[INFO] PocketPredictor - pocket 4 -  surf_atoms:  28   points:   6   score:    3.7
+[INFO] PocketPredictor - pocket 5 -  surf_atoms:  25   points:  10   score:    3.6
+[INFO] PocketPredictor - pocket 6 -  surf_atoms:  20   points:   8   score:    3.5
+[INFO] OldPymolRenderer - copying [/mnt/c/Users/aksha/conformational-ml/adk-models/outputs/pdb/open/structure_099.rebuilt.pdb] to [/mnt/c/Users/aksha/conformational-ml/adk-models/outputs/analysis/p2rank_raw/open/visualizations/data/structure_099.rebuilt.pdb]
+[INFO] Console - predicting pockets finished in 0 hours 0 minutes 7.320 seconds
+[INFO] Console - results saved to directory [/mnt/c/Users/aksha/conformational-ml/adk-models/outputs/analysis/p2rank_raw/open]
+[INFO] Console - 
+[INFO] Console - Finished successfully in 0 hours 0 minutes 8.376 seconds.

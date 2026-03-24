@@ -1,0 +1,2118 @@
+{
+  "generated": {
+    "closed": [
+      {
+        "id": 0,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.769,
+        "top_pocket_score": 16.06
+      },
+      {
+        "id": 1,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.648,
+        "top_pocket_score": 12.35
+      },
+      {
+        "id": 2,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.755,
+        "top_pocket_score": 15.5
+      },
+      {
+        "id": 3,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.794,
+        "top_pocket_score": 17.02
+      },
+      {
+        "id": 4,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.701,
+        "top_pocket_score": 13.85
+      },
+      {
+        "id": 5,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.681,
+        "top_pocket_score": 13.29
+      },
+      {
+        "id": 6,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.443,
+        "top_pocket_score": 8.31
+      },
+      {
+        "id": 7,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.786,
+        "top_pocket_score": 16.75
+      },
+      {
+        "id": 8,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.51,
+        "top_pocket_score": 9.48
+      },
+      {
+        "id": 9,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.617,
+        "top_pocket_score": 11.58
+      },
+      {
+        "id": 10,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.206,
+        "top_pocket_score": 4.7
+      },
+      {
+        "id": 11,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.813,
+        "top_pocket_score": 18.03
+      },
+      {
+        "id": 12,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.833,
+        "top_pocket_score": 19.02
+      },
+      {
+        "id": 13,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.543,
+        "top_pocket_score": 10.1
+      },
+      {
+        "id": 14,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.524,
+        "top_pocket_score": 9.75
+      },
+      {
+        "id": 15,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.477,
+        "top_pocket_score": 8.91
+      },
+      {
+        "id": 16,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.708,
+        "top_pocket_score": 14.01
+      },
+      {
+        "id": 17,
+        "n_pockets": 12,
+        "top_pocket_prob": 0.838,
+        "top_pocket_score": 19.37
+      },
+      {
+        "id": 18,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.534,
+        "top_pocket_score": 9.93
+      },
+      {
+        "id": 19,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.871,
+        "top_pocket_score": 21.51
+      },
+      {
+        "id": 20,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.544,
+        "top_pocket_score": 10.11
+      },
+      {
+        "id": 21,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.833,
+        "top_pocket_score": 19.0
+      },
+      {
+        "id": 22,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.766,
+        "top_pocket_score": 15.93
+      },
+      {
+        "id": 23,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.321,
+        "top_pocket_score": 6.37
+      },
+      {
+        "id": 24,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.846,
+        "top_pocket_score": 19.86
+      },
+      {
+        "id": 25,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.476,
+        "top_pocket_score": 8.9
+      },
+      {
+        "id": 26,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.789,
+        "top_pocket_score": 16.83
+      },
+      {
+        "id": 27,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.888,
+        "top_pocket_score": 23.38
+      },
+      {
+        "id": 28,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.864,
+        "top_pocket_score": 20.91
+      },
+      {
+        "id": 29,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.878,
+        "top_pocket_score": 22.19
+      },
+      {
+        "id": 30,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.786,
+        "top_pocket_score": 16.75
+      },
+      {
+        "id": 31,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.652,
+        "top_pocket_score": 12.47
+      },
+      {
+        "id": 32,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.648,
+        "top_pocket_score": 12.37
+      },
+      {
+        "id": 33,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.926,
+        "top_pocket_score": 28.58
+      },
+      {
+        "id": 34,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.857,
+        "top_pocket_score": 20.53
+      },
+      {
+        "id": 35,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.795,
+        "top_pocket_score": 17.09
+      },
+      {
+        "id": 36,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.868,
+        "top_pocket_score": 21.34
+      },
+      {
+        "id": 37,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.746,
+        "top_pocket_score": 15.14
+      },
+      {
+        "id": 38,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.621,
+        "top_pocket_score": 11.69
+      },
+      {
+        "id": 39,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.831,
+        "top_pocket_score": 18.83
+      },
+      {
+        "id": 40,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.745,
+        "top_pocket_score": 15.12
+      },
+      {
+        "id": 41,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.931,
+        "top_pocket_score": 29.37
+      },
+      {
+        "id": 42,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.92,
+        "top_pocket_score": 27.3
+      },
+      {
+        "id": 43,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.805,
+        "top_pocket_score": 17.61
+      },
+      {
+        "id": 44,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.699,
+        "top_pocket_score": 13.78
+      },
+      {
+        "id": 45,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.777,
+        "top_pocket_score": 16.35
+      },
+      {
+        "id": 46,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.87,
+        "top_pocket_score": 21.44
+      },
+      {
+        "id": 47,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.8,
+        "top_pocket_score": 17.33
+      },
+      {
+        "id": 48,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.824,
+        "top_pocket_score": 18.52
+      },
+      {
+        "id": 49,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.665,
+        "top_pocket_score": 12.86
+      },
+      {
+        "id": 50,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.531,
+        "top_pocket_score": 9.87
+      },
+      {
+        "id": 51,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.782,
+        "top_pocket_score": 16.61
+      },
+      {
+        "id": 52,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.701,
+        "top_pocket_score": 13.85
+      },
+      {
+        "id": 53,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.845,
+        "top_pocket_score": 19.78
+      },
+      {
+        "id": 54,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.706,
+        "top_pocket_score": 13.97
+      },
+      {
+        "id": 55,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.839,
+        "top_pocket_score": 19.39
+      },
+      {
+        "id": 56,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.863,
+        "top_pocket_score": 20.9
+      },
+      {
+        "id": 57,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.72,
+        "top_pocket_score": 14.35
+      },
+      {
+        "id": 58,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.889,
+        "top_pocket_score": 23.42
+      },
+      {
+        "id": 59,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.812,
+        "top_pocket_score": 17.99
+      },
+      {
+        "id": 60,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.421,
+        "top_pocket_score": 7.93
+      },
+      {
+        "id": 61,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.473,
+        "top_pocket_score": 8.83
+      },
+      {
+        "id": 62,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.471,
+        "top_pocket_score": 8.8
+      },
+      {
+        "id": 63,
+        "n_pockets": 9,
+        "top_pocket_prob": 0.728,
+        "top_pocket_score": 14.61
+      },
+      {
+        "id": 64,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.73,
+        "top_pocket_score": 14.67
+      },
+      {
+        "id": 65,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.674,
+        "top_pocket_score": 13.1
+      },
+      {
+        "id": 66,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.871,
+        "top_pocket_score": 21.57
+      },
+      {
+        "id": 67,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.498,
+        "top_pocket_score": 9.29
+      },
+      {
+        "id": 68,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.729,
+        "top_pocket_score": 14.63
+      },
+      {
+        "id": 69,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.864,
+        "top_pocket_score": 20.92
+      },
+      {
+        "id": 70,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.526,
+        "top_pocket_score": 9.79
+      },
+      {
+        "id": 71,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.862,
+        "top_pocket_score": 20.78
+      },
+      {
+        "id": 72,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.716,
+        "top_pocket_score": 14.25
+      },
+      {
+        "id": 73,
+        "n_pockets": 9,
+        "top_pocket_prob": 0.609,
+        "top_pocket_score": 11.41
+      },
+      {
+        "id": 74,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.816,
+        "top_pocket_score": 18.16
+      },
+      {
+        "id": 75,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.887,
+        "top_pocket_score": 23.19
+      },
+      {
+        "id": 76,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.753,
+        "top_pocket_score": 15.45
+      },
+      {
+        "id": 77,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.642,
+        "top_pocket_score": 12.19
+      },
+      {
+        "id": 78,
+        "n_pockets": 9,
+        "top_pocket_prob": 0.574,
+        "top_pocket_score": 10.69
+      },
+      {
+        "id": 79,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.94,
+        "top_pocket_score": 31.75
+      },
+      {
+        "id": 80,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.746,
+        "top_pocket_score": 15.13
+      },
+      {
+        "id": 81,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.937,
+        "top_pocket_score": 30.91
+      },
+      {
+        "id": 82,
+        "n_pockets": 9,
+        "top_pocket_prob": 0.687,
+        "top_pocket_score": 13.46
+      },
+      {
+        "id": 83,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.778,
+        "top_pocket_score": 16.42
+      },
+      {
+        "id": 84,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.794,
+        "top_pocket_score": 17.04
+      },
+      {
+        "id": 85,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.718,
+        "top_pocket_score": 14.3
+      },
+      {
+        "id": 86,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.627,
+        "top_pocket_score": 11.82
+      },
+      {
+        "id": 87,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.756,
+        "top_pocket_score": 15.57
+      },
+      {
+        "id": 88,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.891,
+        "top_pocket_score": 23.63
+      },
+      {
+        "id": 89,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.859,
+        "top_pocket_score": 20.61
+      },
+      {
+        "id": 90,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.651,
+        "top_pocket_score": 12.46
+      },
+      {
+        "id": 91,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.657,
+        "top_pocket_score": 12.63
+      },
+      {
+        "id": 92,
+        "n_pockets": 9,
+        "top_pocket_prob": 0.76,
+        "top_pocket_score": 15.72
+      },
+      {
+        "id": 93,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.582,
+        "top_pocket_score": 10.86
+      },
+      {
+        "id": 94,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.69,
+        "top_pocket_score": 13.54
+      },
+      {
+        "id": 95,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.723,
+        "top_pocket_score": 14.46
+      },
+      {
+        "id": 96,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.664,
+        "top_pocket_score": 12.83
+      },
+      {
+        "id": 97,
+        "n_pockets": 10,
+        "top_pocket_prob": 0.613,
+        "top_pocket_score": 11.49
+      },
+      {
+        "id": 98,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.872,
+        "top_pocket_score": 21.6
+      },
+      {
+        "id": 99,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.6,
+        "top_pocket_score": 11.2
+      }
+    ],
+    "intermediate": [
+      {
+        "id": 0,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.63,
+        "top_pocket_score": 11.9
+      },
+      {
+        "id": 1,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.673,
+        "top_pocket_score": 13.08
+      },
+      {
+        "id": 2,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.111,
+        "top_pocket_score": 3.22
+      },
+      {
+        "id": 3,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.646,
+        "top_pocket_score": 12.3
+      },
+      {
+        "id": 4,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.793,
+        "top_pocket_score": 17.01
+      },
+      {
+        "id": 5,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.437,
+        "top_pocket_score": 8.21
+      },
+      {
+        "id": 6,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.528,
+        "top_pocket_score": 9.82
+      },
+      {
+        "id": 7,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.781,
+        "top_pocket_score": 16.55
+      },
+      {
+        "id": 8,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.178,
+        "top_pocket_score": 4.3
+      },
+      {
+        "id": 9,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.622,
+        "top_pocket_score": 11.71
+      },
+      {
+        "id": 10,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.545,
+        "top_pocket_score": 10.14
+      },
+      {
+        "id": 11,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.577,
+        "top_pocket_score": 10.74
+      },
+      {
+        "id": 12,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.796,
+        "top_pocket_score": 17.11
+      },
+      {
+        "id": 13,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.837,
+        "top_pocket_score": 19.25
+      },
+      {
+        "id": 14,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.581,
+        "top_pocket_score": 10.83
+      },
+      {
+        "id": 15,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.755,
+        "top_pocket_score": 15.5
+      },
+      {
+        "id": 16,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.707,
+        "top_pocket_score": 14.0
+      },
+      {
+        "id": 17,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.163,
+        "top_pocket_score": 4.06
+      },
+      {
+        "id": 18,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.532,
+        "top_pocket_score": 9.9
+      },
+      {
+        "id": 19,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.66,
+        "top_pocket_score": 12.75
+      },
+      {
+        "id": 20,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.7,
+        "top_pocket_score": 13.82
+      },
+      {
+        "id": 21,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.851,
+        "top_pocket_score": 20.16
+      },
+      {
+        "id": 22,
+        "n_pockets": 10,
+        "top_pocket_prob": 0.627,
+        "top_pocket_score": 11.83
+      },
+      {
+        "id": 23,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.825,
+        "top_pocket_score": 18.59
+      },
+      {
+        "id": 24,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.84,
+        "top_pocket_score": 19.51
+      },
+      {
+        "id": 25,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.677,
+        "top_pocket_score": 13.2
+      },
+      {
+        "id": 26,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.55,
+        "top_pocket_score": 10.23
+      },
+      {
+        "id": 27,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.376,
+        "top_pocket_score": 7.22
+      },
+      {
+        "id": 28,
+        "n_pockets": 2,
+        "top_pocket_prob": 0.268,
+        "top_pocket_score": 5.59
+      },
+      {
+        "id": 29,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.736,
+        "top_pocket_score": 14.84
+      },
+      {
+        "id": 30,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.72,
+        "top_pocket_score": 14.37
+      },
+      {
+        "id": 31,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.784,
+        "top_pocket_score": 16.68
+      },
+      {
+        "id": 32,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.828,
+        "top_pocket_score": 18.73
+      },
+      {
+        "id": 33,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.532,
+        "top_pocket_score": 9.9
+      },
+      {
+        "id": 34,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.647,
+        "top_pocket_score": 12.35
+      },
+      {
+        "id": 35,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.798,
+        "top_pocket_score": 17.2
+      },
+      {
+        "id": 36,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.501,
+        "top_pocket_score": 9.33
+      },
+      {
+        "id": 37,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.821,
+        "top_pocket_score": 18.37
+      },
+      {
+        "id": 38,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.792,
+        "top_pocket_score": 16.95
+      },
+      {
+        "id": 39,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.477,
+        "top_pocket_score": 8.91
+      },
+      {
+        "id": 40,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.793,
+        "top_pocket_score": 16.99
+      },
+      {
+        "id": 41,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.718,
+        "top_pocket_score": 14.29
+      },
+      {
+        "id": 42,
+        "n_pockets": 2,
+        "top_pocket_prob": 0.617,
+        "top_pocket_score": 11.58
+      },
+      {
+        "id": 43,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.886,
+        "top_pocket_score": 23.1
+      },
+      {
+        "id": 44,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.412,
+        "top_pocket_score": 7.77
+      },
+      {
+        "id": 45,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.588,
+        "top_pocket_score": 10.96
+      },
+      {
+        "id": 46,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.728,
+        "top_pocket_score": 14.61
+      },
+      {
+        "id": 47,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.269,
+        "top_pocket_score": 5.61
+      },
+      {
+        "id": 48,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.753,
+        "top_pocket_score": 15.45
+      },
+      {
+        "id": 49,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.323,
+        "top_pocket_score": 6.41
+      },
+      {
+        "id": 50,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.556,
+        "top_pocket_score": 10.35
+      },
+      {
+        "id": 51,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.256,
+        "top_pocket_score": 5.4
+      },
+      {
+        "id": 52,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.656,
+        "top_pocket_score": 12.6
+      },
+      {
+        "id": 53,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.572,
+        "top_pocket_score": 10.64
+      },
+      {
+        "id": 54,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.598,
+        "top_pocket_score": 11.16
+      },
+      {
+        "id": 55,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.695,
+        "top_pocket_score": 13.68
+      },
+      {
+        "id": 56,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.622,
+        "top_pocket_score": 11.7
+      },
+      {
+        "id": 57,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.751,
+        "top_pocket_score": 15.3
+      },
+      {
+        "id": 58,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.693,
+        "top_pocket_score": 13.62
+      },
+      {
+        "id": 59,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.668,
+        "top_pocket_score": 12.93
+      },
+      {
+        "id": 60,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.445,
+        "top_pocket_score": 8.34
+      },
+      {
+        "id": 61,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.33,
+        "top_pocket_score": 6.53
+      },
+      {
+        "id": 62,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.719,
+        "top_pocket_score": 14.32
+      },
+      {
+        "id": 63,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.462,
+        "top_pocket_score": 8.65
+      },
+      {
+        "id": 64,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.325,
+        "top_pocket_score": 6.44
+      },
+      {
+        "id": 65,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.817,
+        "top_pocket_score": 18.18
+      },
+      {
+        "id": 66,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.514,
+        "top_pocket_score": 9.56
+      },
+      {
+        "id": 67,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.647,
+        "top_pocket_score": 12.34
+      },
+      {
+        "id": 68,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.793,
+        "top_pocket_score": 17.01
+      },
+      {
+        "id": 69,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.314,
+        "top_pocket_score": 6.27
+      },
+      {
+        "id": 70,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.811,
+        "top_pocket_score": 17.92
+      },
+      {
+        "id": 71,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.286,
+        "top_pocket_score": 5.86
+      },
+      {
+        "id": 72,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.561,
+        "top_pocket_score": 10.44
+      },
+      {
+        "id": 73,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.625,
+        "top_pocket_score": 11.78
+      },
+      {
+        "id": 74,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.456,
+        "top_pocket_score": 8.53
+      },
+      {
+        "id": 75,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.461,
+        "top_pocket_score": 8.62
+      },
+      {
+        "id": 76,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.615,
+        "top_pocket_score": 11.54
+      },
+      {
+        "id": 77,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.799,
+        "top_pocket_score": 17.26
+      },
+      {
+        "id": 78,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.685,
+        "top_pocket_score": 13.42
+      },
+      {
+        "id": 79,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.874,
+        "top_pocket_score": 21.8
+      },
+      {
+        "id": 80,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.467,
+        "top_pocket_score": 8.72
+      },
+      {
+        "id": 81,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.307,
+        "top_pocket_score": 6.16
+      },
+      {
+        "id": 82,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.725,
+        "top_pocket_score": 14.53
+      },
+      {
+        "id": 83,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.729,
+        "top_pocket_score": 14.63
+      },
+      {
+        "id": 84,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.413,
+        "top_pocket_score": 7.78
+      },
+      {
+        "id": 85,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.563,
+        "top_pocket_score": 10.47
+      },
+      {
+        "id": 86,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.563,
+        "top_pocket_score": 10.47
+      },
+      {
+        "id": 87,
+        "n_pockets": 9,
+        "top_pocket_prob": 0.686,
+        "top_pocket_score": 13.44
+      },
+      {
+        "id": 88,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.799,
+        "top_pocket_score": 17.26
+      },
+      {
+        "id": 89,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.677,
+        "top_pocket_score": 13.21
+      },
+      {
+        "id": 90,
+        "n_pockets": 9,
+        "top_pocket_prob": 0.645,
+        "top_pocket_score": 12.26
+      },
+      {
+        "id": 91,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.438,
+        "top_pocket_score": 8.22
+      },
+      {
+        "id": 92,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.369,
+        "top_pocket_score": 7.1
+      },
+      {
+        "id": 93,
+        "n_pockets": 2,
+        "top_pocket_prob": 0.61,
+        "top_pocket_score": 11.41
+      },
+      {
+        "id": 94,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.343,
+        "top_pocket_score": 6.73
+      },
+      {
+        "id": 95,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.811,
+        "top_pocket_score": 17.93
+      },
+      {
+        "id": 96,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.581,
+        "top_pocket_score": 10.83
+      },
+      {
+        "id": 97,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.387,
+        "top_pocket_score": 7.39
+      },
+      {
+        "id": 98,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.542,
+        "top_pocket_score": 10.06
+      },
+      {
+        "id": 99,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.59,
+        "top_pocket_score": 11.0
+      }
+    ],
+    "open": [
+      {
+        "id": 0,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.762,
+        "top_pocket_score": 15.81
+      },
+      {
+        "id": 1,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.703,
+        "top_pocket_score": 13.9
+      },
+      {
+        "id": 2,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.694,
+        "top_pocket_score": 13.65
+      },
+      {
+        "id": 3,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.753,
+        "top_pocket_score": 15.44
+      },
+      {
+        "id": 4,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.893,
+        "top_pocket_score": 23.88
+      },
+      {
+        "id": 5,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.671,
+        "top_pocket_score": 13.02
+      },
+      {
+        "id": 6,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.679,
+        "top_pocket_score": 13.24
+      },
+      {
+        "id": 7,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.834,
+        "top_pocket_score": 19.06
+      },
+      {
+        "id": 8,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.719,
+        "top_pocket_score": 14.32
+      },
+      {
+        "id": 9,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.443,
+        "top_pocket_score": 8.31
+      },
+      {
+        "id": 10,
+        "n_pockets": 9,
+        "top_pocket_prob": 0.76,
+        "top_pocket_score": 15.71
+      },
+      {
+        "id": 11,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.713,
+        "top_pocket_score": 14.16
+      },
+      {
+        "id": 12,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.677,
+        "top_pocket_score": 13.18
+      },
+      {
+        "id": 13,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.563,
+        "top_pocket_score": 10.47
+      },
+      {
+        "id": 14,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.586,
+        "top_pocket_score": 10.92
+      },
+      {
+        "id": 15,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.668,
+        "top_pocket_score": 12.93
+      },
+      {
+        "id": 16,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.451,
+        "top_pocket_score": 8.45
+      },
+      {
+        "id": 17,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.768,
+        "top_pocket_score": 16.04
+      },
+      {
+        "id": 18,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.344,
+        "top_pocket_score": 6.75
+      },
+      {
+        "id": 19,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.754,
+        "top_pocket_score": 15.46
+      },
+      {
+        "id": 20,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.821,
+        "top_pocket_score": 18.35
+      },
+      {
+        "id": 21,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.741,
+        "top_pocket_score": 14.98
+      },
+      {
+        "id": 22,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.686,
+        "top_pocket_score": 13.44
+      },
+      {
+        "id": 23,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.838,
+        "top_pocket_score": 19.36
+      },
+      {
+        "id": 24,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.855,
+        "top_pocket_score": 20.45
+      },
+      {
+        "id": 25,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.807,
+        "top_pocket_score": 17.7
+      },
+      {
+        "id": 26,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.706,
+        "top_pocket_score": 13.97
+      },
+      {
+        "id": 27,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.747,
+        "top_pocket_score": 15.15
+      },
+      {
+        "id": 28,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.741,
+        "top_pocket_score": 14.99
+      },
+      {
+        "id": 29,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.655,
+        "top_pocket_score": 12.56
+      },
+      {
+        "id": 30,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.508,
+        "top_pocket_score": 9.45
+      },
+      {
+        "id": 31,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.822,
+        "top_pocket_score": 18.42
+      },
+      {
+        "id": 32,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.564,
+        "top_pocket_score": 10.49
+      },
+      {
+        "id": 33,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.801,
+        "top_pocket_score": 17.34
+      },
+      {
+        "id": 34,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.598,
+        "top_pocket_score": 11.16
+      },
+      {
+        "id": 35,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.699,
+        "top_pocket_score": 13.79
+      },
+      {
+        "id": 36,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.707,
+        "top_pocket_score": 13.99
+      },
+      {
+        "id": 37,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.448,
+        "top_pocket_score": 8.41
+      },
+      {
+        "id": 38,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.416,
+        "top_pocket_score": 7.83
+      },
+      {
+        "id": 39,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.77,
+        "top_pocket_score": 16.11
+      },
+      {
+        "id": 40,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.677,
+        "top_pocket_score": 13.21
+      },
+      {
+        "id": 41,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.705,
+        "top_pocket_score": 13.95
+      },
+      {
+        "id": 42,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.565,
+        "top_pocket_score": 10.5
+      },
+      {
+        "id": 43,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.472,
+        "top_pocket_score": 8.83
+      },
+      {
+        "id": 44,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.723,
+        "top_pocket_score": 14.46
+      },
+      {
+        "id": 45,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.327,
+        "top_pocket_score": 6.47
+      },
+      {
+        "id": 46,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.478,
+        "top_pocket_score": 8.92
+      },
+      {
+        "id": 47,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.667,
+        "top_pocket_score": 12.9
+      },
+      {
+        "id": 48,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.776,
+        "top_pocket_score": 16.3
+      },
+      {
+        "id": 49,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.783,
+        "top_pocket_score": 16.64
+      },
+      {
+        "id": 50,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.68,
+        "top_pocket_score": 13.28
+      },
+      {
+        "id": 51,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.761,
+        "top_pocket_score": 15.74
+      },
+      {
+        "id": 52,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.784,
+        "top_pocket_score": 16.67
+      },
+      {
+        "id": 53,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.58,
+        "top_pocket_score": 10.81
+      },
+      {
+        "id": 54,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.652,
+        "top_pocket_score": 12.47
+      },
+      {
+        "id": 55,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.799,
+        "top_pocket_score": 17.23
+      },
+      {
+        "id": 56,
+        "n_pockets": 9,
+        "top_pocket_prob": 0.805,
+        "top_pocket_score": 17.61
+      },
+      {
+        "id": 57,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.707,
+        "top_pocket_score": 13.99
+      },
+      {
+        "id": 58,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.734,
+        "top_pocket_score": 14.77
+      },
+      {
+        "id": 59,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.77,
+        "top_pocket_score": 16.1
+      },
+      {
+        "id": 60,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.553,
+        "top_pocket_score": 10.3
+      },
+      {
+        "id": 61,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.754,
+        "top_pocket_score": 15.46
+      },
+      {
+        "id": 62,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.525,
+        "top_pocket_score": 9.78
+      },
+      {
+        "id": 63,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.844,
+        "top_pocket_score": 19.77
+      },
+      {
+        "id": 64,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.788,
+        "top_pocket_score": 16.81
+      },
+      {
+        "id": 65,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.751,
+        "top_pocket_score": 15.34
+      },
+      {
+        "id": 66,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.667,
+        "top_pocket_score": 12.92
+      },
+      {
+        "id": 67,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.802,
+        "top_pocket_score": 17.46
+      },
+      {
+        "id": 68,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.619,
+        "top_pocket_score": 11.63
+      },
+      {
+        "id": 69,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.744,
+        "top_pocket_score": 15.08
+      },
+      {
+        "id": 70,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.536,
+        "top_pocket_score": 9.96
+      },
+      {
+        "id": 71,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.315,
+        "top_pocket_score": 6.29
+      },
+      {
+        "id": 72,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.75,
+        "top_pocket_score": 15.26
+      },
+      {
+        "id": 73,
+        "n_pockets": 9,
+        "top_pocket_prob": 0.75,
+        "top_pocket_score": 15.28
+      },
+      {
+        "id": 74,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.563,
+        "top_pocket_score": 10.47
+      },
+      {
+        "id": 75,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.691,
+        "top_pocket_score": 13.56
+      },
+      {
+        "id": 76,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.689,
+        "top_pocket_score": 13.52
+      },
+      {
+        "id": 77,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.605,
+        "top_pocket_score": 11.31
+      },
+      {
+        "id": 78,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.715,
+        "top_pocket_score": 14.21
+      },
+      {
+        "id": 79,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.672,
+        "top_pocket_score": 13.04
+      },
+      {
+        "id": 80,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.685,
+        "top_pocket_score": 13.4
+      },
+      {
+        "id": 81,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.707,
+        "top_pocket_score": 14.0
+      },
+      {
+        "id": 82,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.841,
+        "top_pocket_score": 19.59
+      },
+      {
+        "id": 83,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.769,
+        "top_pocket_score": 16.07
+      },
+      {
+        "id": 84,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.8,
+        "top_pocket_score": 17.31
+      },
+      {
+        "id": 85,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.739,
+        "top_pocket_score": 14.91
+      },
+      {
+        "id": 86,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.653,
+        "top_pocket_score": 12.52
+      },
+      {
+        "id": 87,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.799,
+        "top_pocket_score": 17.24
+      },
+      {
+        "id": 88,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.88,
+        "top_pocket_score": 22.38
+      },
+      {
+        "id": 89,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.795,
+        "top_pocket_score": 17.06
+      },
+      {
+        "id": 90,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.597,
+        "top_pocket_score": 11.14
+      },
+      {
+        "id": 91,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.782,
+        "top_pocket_score": 16.62
+      },
+      {
+        "id": 92,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.668,
+        "top_pocket_score": 12.94
+      },
+      {
+        "id": 93,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.786,
+        "top_pocket_score": 16.74
+      },
+      {
+        "id": 94,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.441,
+        "top_pocket_score": 8.28
+      },
+      {
+        "id": 95,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.71,
+        "top_pocket_score": 14.06
+      },
+      {
+        "id": 96,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.698,
+        "top_pocket_score": 13.74
+      },
+      {
+        "id": 97,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.651,
+        "top_pocket_score": 12.45
+      },
+      {
+        "id": 98,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.735,
+        "top_pocket_score": 14.81
+      },
+      {
+        "id": 99,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.73,
+        "top_pocket_score": 14.67
+      }
+    ]
+  },
+  "real": {
+    "closed": [
+      {
+        "id": 0,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.8
+      },
+      {
+        "id": 1,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.679
+      },
+      {
+        "id": 2,
+        "n_pockets": 10,
+        "top_pocket_prob": 0.719
+      },
+      {
+        "id": 3,
+        "n_pockets": 2,
+        "top_pocket_prob": 0.735
+      },
+      {
+        "id": 4,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.721
+      },
+      {
+        "id": 5,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.905
+      },
+      {
+        "id": 6,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.414
+      },
+      {
+        "id": 7,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.753
+      },
+      {
+        "id": 8,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.888
+      },
+      {
+        "id": 9,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.795
+      },
+      {
+        "id": 10,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.247
+      },
+      {
+        "id": 11,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.724
+      },
+      {
+        "id": 12,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.806
+      },
+      {
+        "id": 13,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.688
+      },
+      {
+        "id": 14,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.39
+      },
+      {
+        "id": 15,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.624
+      },
+      {
+        "id": 16,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.769
+      },
+      {
+        "id": 17,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.771
+      },
+      {
+        "id": 18,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.292
+      },
+      {
+        "id": 19,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.78
+      }
+    ],
+    "intermediate": [
+      {
+        "id": 0,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.466
+      },
+      {
+        "id": 1,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.799
+      },
+      {
+        "id": 2,
+        "n_pockets": 2,
+        "top_pocket_prob": 0.381
+      },
+      {
+        "id": 3,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.495
+      },
+      {
+        "id": 4,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.875
+      },
+      {
+        "id": 5,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.8
+      },
+      {
+        "id": 6,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.831
+      },
+      {
+        "id": 7,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.467
+      },
+      {
+        "id": 8,
+        "n_pockets": 1,
+        "top_pocket_prob": 0.71
+      },
+      {
+        "id": 9,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.863
+      },
+      {
+        "id": 10,
+        "n_pockets": 2,
+        "top_pocket_prob": 0.795
+      },
+      {
+        "id": 11,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.31
+      },
+      {
+        "id": 12,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.2
+      },
+      {
+        "id": 13,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.87
+      },
+      {
+        "id": 14,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.9
+      },
+      {
+        "id": 15,
+        "n_pockets": 9,
+        "top_pocket_prob": 0.839
+      },
+      {
+        "id": 16,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.865
+      },
+      {
+        "id": 17,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.253
+      },
+      {
+        "id": 18,
+        "n_pockets": 2,
+        "top_pocket_prob": 0.157
+      },
+      {
+        "id": 19,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.816
+      }
+    ],
+    "open": [
+      {
+        "id": 0,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.733
+      },
+      {
+        "id": 1,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.771
+      },
+      {
+        "id": 2,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.832
+      },
+      {
+        "id": 3,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.825
+      },
+      {
+        "id": 4,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.798
+      },
+      {
+        "id": 5,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.792
+      },
+      {
+        "id": 6,
+        "n_pockets": 7,
+        "top_pocket_prob": 0.794
+      },
+      {
+        "id": 7,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.756
+      },
+      {
+        "id": 8,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.338
+      },
+      {
+        "id": 9,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.82
+      },
+      {
+        "id": 10,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.764
+      },
+      {
+        "id": 11,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.864
+      },
+      {
+        "id": 12,
+        "n_pockets": 8,
+        "top_pocket_prob": 0.816
+      },
+      {
+        "id": 13,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.753
+      },
+      {
+        "id": 14,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.823
+      },
+      {
+        "id": 15,
+        "n_pockets": 3,
+        "top_pocket_prob": 0.864
+      },
+      {
+        "id": 16,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.744
+      },
+      {
+        "id": 17,
+        "n_pockets": 6,
+        "top_pocket_prob": 0.555
+      },
+      {
+        "id": 18,
+        "n_pockets": 4,
+        "top_pocket_prob": 0.74
+      },
+      {
+        "id": 19,
+        "n_pockets": 5,
+        "top_pocket_prob": 0.566
+      }
+    ]
+  }
+}
