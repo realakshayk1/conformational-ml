@@ -34,7 +34,7 @@ for tau in taus:
             print(f"{tau:<5} | {lag_time:<9} | {score:.4f}")
         vamp2_scores[f"tau_{tau}"][str(lag_time)] = score
 
-with open('outputs/vamp2_scores.json', 'w') as f:
+with open('outputs/analysis/vamp2_scores.json', 'w') as f:
     json.dump(vamp2_scores, f, indent=4)
 
 # Step 3: Best TAU
@@ -133,6 +133,6 @@ print(f"""
 """)
 
 print("Outputs saved to:")
-print("outputs/vamp2_scores.json")
+print("outputs/analysis/vamp2_scores.json")
 print(f"outputs/figures/ck_test_tau{best_tau}.png")
 print("outputs/figures/implied_timescales.png")

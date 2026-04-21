@@ -10,34 +10,21 @@ def run_vamp2(latent_trajectories: list, lag_times: list) -> dict:
         scores[lag] = float(model.score(r=2))
     return scores
 
-def run_ck_test(latent_trajectories: list, lag_time: int):
-    """Returns a Chapman-Kolmogorov test result object from deeptime."""
+def run_ck_test(latent_trajectories: list, lag_time: int, n_samples: int = 100):
+    """Returns a Chapman-Kolmogorov test result object from deeptime (BayesianMSM)."""
     from deeptime.clustering import KMeans
-    from deeptime.markov.msm import MaximumLikelihoodMSM
-    
-    # Check if trajectories is list of arrays or one array
-    if isinstance(latent_trajectories, list) and len(latent_trajectories) == 1:
-        data = latent_trajectories[0]
-    else:
-        # Simplification assuming it's a single trajectory for best model
-        data = latent_trajectories if not isinstance(latent_trajectories, list) else latent_trajectories[0]
+    from deeptime.markov.msm import BayesianMSM
 
-    # 1. Discretize into k=3 states
+    data = latent_trajectories[0] if isinstance(latent_trajectories, list) else latent_trajectories
+
     km = KMeans(n_clusters=3, max_iter=100, init_strategy='kmeans++')
-    dtrajs = km.fit_fetch(data).transform(data)
-    
-    # 2. Fit Models for varying lags
-    models = []
-    mlags = 5
-    for i in range(1, mlags + 1):
-        estimator = MaximumLikelihoodMSM(lagtime=lag_time * i, reversible=True)
-        models.append(estimator.fit_fetch(dtrajs))
-        
-    msm = models[0] # The base model at lag_time
-    
-    # 3. CK test
-    cktest = msm.ck_test(models, 3)
-    return cktest
+    dtraj = km.fit_fetch(data).transform(data)
+
+    models = [
+        BayesianMSM(lagtime=lag_time * i, n_samples=n_samples).fit_fetch([dtraj])
+        for i in range(1, 6)
+    ]
+    return models[0].ck_test(models, 3, err_est=True)
 
 def plot_implied_timescales(lag_times: list, timescales: np.ndarray, save_path: str):
     plt.figure()

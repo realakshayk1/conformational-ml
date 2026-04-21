@@ -10,18 +10,18 @@ This project is built around two core scientific inquiries:
 
 ## Description
 
-The pipeline uses **Adenylate Kinase (AdK)** as a model system, well-known for its large-scale open/closed conformational transitions. We utilize ~60,000 frames of MD trajectories (Equilibrium, DIMS, and FRODA) from the `MDAnalysisData` package.
+The pipeline uses **Adenylate Kinase (AdK)** as a model system, well-known for its large-scale open/closed conformational transitions. We utilize ~52,000 frames of MD trajectories (Equilibrium, DIMS, and FRODA) from the `MDAnalysisData` package, split 70/15/15 into train (36,510), validation (~7,820), and test (~7,830) sets.
 
 ## Installation
 
 ### Requirements
-- Python 3.10
+- Python 3.11
 - Conda (recommended)
 
 ### Setup
 1. Create and activate the conda environment:
    ```bash
-   conda create -n adk python=3.10
+   conda create -n adk python=3.11
    conda activate adk
    ```
 2. Install dependencies:
@@ -71,12 +71,12 @@ The pipeline uses **Adenylate Kinase (AdK)** as a model system, well-known for i
 
 ### Representation & Dynamics
 - **VAMP-2 Score**: **2.97** (theoretical max 3.0 for a 2D representation), outperforming the naive linear PCA-2D baseline (**1.01**) and matching the PCA-50→linear-VAC ceiling (**2.99**) with a learned nonlinear graph representation.
-- **Markovian Validation**: Chapman-Kolmogorov (CK) test run at lag time of 5; CK test validation pending code fix (see known issues).
+- **Markovian Validation**: Chapman-Kolmogorov (CK) test (BayesianMSM, lag=5, k=3 states) shows 7/15 diagonal entries outside 95% CI — the 3-state discretization is not fully Markovian at this lag. A finer state decomposition or longer lag time is needed for a passing CK test.
 - **State Axis**: Latent space captures the full closed-to-open conformational transition axis, validated by VAMP-2 scoring against linear baselines.
 
 ### Generative Performance
-- **Generative Fidelity**: Generated ensembles match real MD distributions for Radius of Gyration (Rg) within **~5%**.
-- **Structural Integrity**: C\u03b1 virtual bond lengths are maintained at ~4.07\u00c5, ensuring physical validity.
+- **Generative Fidelity**: Generated ensemble Rg values are within **5–7%** of real MD mean Rg (best: ~2% for open state; worst: ~6.5% for closed state at guidance scale 1.0).
+- **Structural Integrity**: Mean C\u03b1 virtual bond lengths range from ~3.8 \u00c5 (guidance scale 1.0) to ~4.1 \u00c5 (guidance scale 3.0). 82–100% of generated structures contain at least one bond outside the strict [2.5, 5.0] \u00c5 per-structure threshold, indicating guidance-scale sensitivity in geometric quality.
 - **Validation Loss**: Best MSE of **0.249** achieved at epoch 84.
 
 ### Pocket Analysis (PULCHRA + P2Rank)
@@ -92,7 +92,7 @@ We evaluated the ability to detect binding pockets across states in both generat
 Based on the Phase 2 results, we can answer our core scientific questions:
 
 1. **Latent Representation**: Yes. The GNN-based TAE achieves a VAMP-2 score of **2.97** (vs. **1.01** for direct 2D PCA), capturing the slow conformational dynamics that linear projections miss. Notably, it matches the PCA-50 linear VAC ceiling (**2.99**), confirming the graph representation extracts equivalent dynamical information with a nonlinear architecture.
-2. **Generative Ensembles**: Yes. The conditional diffusion model generates state-specific ensembles that are physically valid and match MD statistics within 5%. 
+2. **Generative Ensembles**: Yes. The conditional diffusion model generates state-specific ensembles with Rg values within 5–7% of real MD distributions. Geometric quality is guidance-scale dependent; lower guidance scales produce more physically plausible bond geometries at the cost of reduced state conditioning. 
 3. **Cryptic Sites**: The analysis revealed that the dominant binding pocket is spatially conserved across states (displacement < 2.3\u00c5). However, the **intermediate state** exhibited notable pocket occlusion (lowest frequency & druggability score), confirming that transition states may naturally obscure binding sites during domain motion. No entirely new "cryptic" pockets were found, but the dynamic narrowing of the existing pocket was explicitly captured.
 
 ## Authors and Acknowledgment

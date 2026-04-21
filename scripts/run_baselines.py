@@ -35,54 +35,33 @@ def compute_vac_baseline(baseline_dir, lag_times, dim=2):
     return results
 
 def check_ck_test_pass(cktest, lag_time):
-    """
-    Explicitly checks if all estimated timescales (probabilities) fall within the confidence intervals
-    of the predicted timescales at the specified lag time.
-    """
+    """Check CK test pass/fail using diagonal self-transition probabilities with 95% CI."""
     if cktest is None:
         return "FAIL (No MSM constructed)"
 
     try:
-        total_timescales = 0
         outside_bounds = 0
-        
-        # deeptime ck_test object has .estimates, .predictions, .estimates_samples
-        n_lags = len(cktest.lagtimes)
-        n_sets = 3
-        
-        # lag_idx corresponding to lag_time base
-        lag_idx = 0
-        for i, l in enumerate(cktest.lagtimes):
-            if l == lag_time:
-                lag_idx = i
-                break
-                
-        for k in range(n_sets):
-            # For a given state k, get the transition probability at lag_idx
-            # deeptime estimates is typically list of arrays: cktest.estimates[lag_idx][k]
-            est = cktest.estimates[lag_idx][k]
-            pred = cktest.predictions[lag_idx][k]
-            
-            # Fetch samples to get confidence bounds
-            if hasattr(cktest, 'estimates_samples') and cktest.estimates_samples is not None:
-                samples = cktest.estimates_samples[lag_idx][:, k]
+        total = 0
+
+        for lag_idx, lag in enumerate(cktest.lagtimes):
+            if lag == 0:
+                continue
+            for k in range(cktest.n_components):
+                pred = float(np.real(cktest.predictions[lag_idx][k, k]))
+                samples = [float(s[k, k]) for s in cktest.estimates_samples[lag_idx]]
                 lower = np.percentile(samples, 2.5)
                 upper = np.percentile(samples, 97.5)
-            else:
-                lower = est * 0.95
-                upper = est * 1.05
-            
-            total_timescales += 1
-            if not (lower <= pred <= upper):
-                outside_bounds += 1
-                
+                total += 1
+                if not (lower <= pred <= upper):
+                    outside_bounds += 1
+
         if outside_bounds == 0:
-            return f"PASS (all timescales within bounds at lag={lag_time})"
+            return f"PASS (all {total} diagonal entries within 95% CI)"
         else:
-            return f"FAIL ({outside_bounds} timescales outside bounds at lag={lag_time})"
-            
+            return f"FAIL ({outside_bounds}/{total} diagonal entries outside 95% CI)"
+
     except Exception as e:
-        return f"FAIL (Error extracting CK test bounds: {e})"
+        return f"FAIL (Error: {e})"
 
 def main():
     base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
