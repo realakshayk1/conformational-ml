@@ -6,8 +6,8 @@ def run_vamp2(latent_trajectories: list, lag_times: list) -> dict:
     from deeptime.decomposition import VAMP
     scores = {}
     for lag in lag_times:
-        vamp = VAMP(lagtime=lag).fit(latent_trajectories)
-        scores[lag] = vamp.score(latent_trajectories, r=2)
+        model = VAMP(lagtime=lag).fit(latent_trajectories).fetch_model()
+        scores[lag] = float(model.score(r=2))
     return scores
 
 def run_ck_test(latent_trajectories: list, lag_time: int):
