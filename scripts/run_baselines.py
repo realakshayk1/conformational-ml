@@ -7,6 +7,33 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..',
 
 from analysis.msm import run_vamp2, run_ck_test, plot_free_energy_landscape
 
+
+def compute_vac_baseline(baseline_dir, lag_times, dim=2):
+    """VAMP-2 score linear VAC baselines at dim=2 to match TAE latent dimensionality.
+
+    Scores both PCA50→top-2 (linear VAC proper) and PCA2 (direct 2D projection).
+    """
+    from deeptime.decomposition import VAMP
+
+    results = {}
+
+    for label, fname in [("linear_vac_pca50_dim2", "pca50_train.npy"),
+                          ("linear_vac_pca2",       "pca2_train.npy")]:
+        path = os.path.join(baseline_dir, fname)
+        if not os.path.exists(path):
+            print(f"  Skipping {label}: {path} not found.")
+            continue
+        traj = np.load(path)
+        scores = {}
+        for lag in lag_times:
+            model = VAMP(lagtime=lag, dim=dim).fit([traj]).fetch_model()
+            scores[lag] = float(model.score(r=2))
+        results[label] = scores
+        best = max(scores.values())
+        print(f"  {label}: best VAMP-2 = {best:.4f}")
+
+    return results
+
 def check_ck_test_pass(cktest, lag_time):
     """
     Explicitly checks if all estimated timescales (probabilities) fall within the confidence intervals
@@ -75,6 +102,11 @@ def main():
     best_tau = None
     best_lag = None
     
+    # 0. Linear VAC baselines (dim=2, matching TAE latent dimensionality)
+    print("Computing linear VAC baseline VAMP-2 scores (dim=2)...")
+    vac_scores = compute_vac_baseline(baseline_dir, lag_times)
+    all_scores.update(vac_scores)
+
     # 1. VAMP-2 Scoring
     print("Running VAMP-2 scoring...")
     for tau in taus:
@@ -99,9 +131,17 @@ def main():
                     best_tau = tau
                     best_lag = lag
                     
+    # Score GNN encoder latent if available
+    gnn_path = os.path.join(latent_dir, 'gnn_encoder.npy')
+    if os.path.exists(gnn_path):
+        gnn_traj = np.load(gnn_path)
+        gnn_scores = run_vamp2([gnn_traj], lag_times)
+        all_scores["gnn_encoder"] = gnn_scores
+        print(f"  GNN encoder best VAMP-2: {max(gnn_scores.values()):.4f}")
+
     with open(os.path.join(analysis_dir, 'vamp2_scores.json'), 'w') as f:
         json.dump(all_scores, f, indent=4)
-        
+
     print(f"\nBest VAMP-2 Score (candidates tau=1,5): {best_score_candidate:.4f} (tau={best_tau}, lag={best_lag})")
         
     # 2. CK Test
@@ -116,12 +156,12 @@ def main():
     # Plotting CK test
     if cktest is not None:
         try:
-            import pyemma.plots as mplt
             import matplotlib.pyplot as plt
-            fig, axes = mplt.plot_cktest(cktest)
+            from deeptime.plots import plot_ck_test
+            fig = plot_ck_test(cktest)
             fig.savefig(os.path.join(figures_dir, 'ck_test.png'))
             plt.close(fig)
-        except ImportError:
+        except Exception:
             pass
             
             

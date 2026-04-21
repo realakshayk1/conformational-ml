@@ -70,9 +70,9 @@ The pipeline uses **Adenylate Kinase (AdK)** as a model system, well-known for i
 ## Results Summary (v1.0-phase2)
 
 ### Representation & Dynamics
-- **VAMP-2 Score**: **2.97** (Theoretical max 3.0), indicating excellent capture of the slowest dynamical modes.
-- **Markovian Validation**: Passed the Chapman-Kolmogorov (CK) test at a lag time of 5.
-- **State Axis**: GNN latent projection correlates with PCA PC1 at **r = 0.99**, providing a high-fidelity mapping of the closed-to-open transition.
+- **VAMP-2 Score**: **2.97** (theoretical max 3.0 for a 2D representation), outperforming the naive linear PCA-2D baseline (**1.01**) and matching the PCA-50→linear-VAC ceiling (**2.99**) with a learned nonlinear graph representation.
+- **Markovian Validation**: Chapman-Kolmogorov (CK) test run at lag time of 5; CK test validation pending code fix (see known issues).
+- **State Axis**: Latent space captures the full closed-to-open conformational transition axis, validated by VAMP-2 scoring against linear baselines.
 
 ### Generative Performance
 - **Generative Fidelity**: Generated ensembles match real MD distributions for Radius of Gyration (Rg) within **~5%**.
@@ -91,7 +91,7 @@ We evaluated the ability to detect binding pockets across states in both generat
 
 Based on the Phase 2 results, we can answer our core scientific questions:
 
-1. **Latent Representation**: Yes. The GNN-based latent space captures the transition pathway with significantly higher purity and correlation (r=0.99) than linear baselines, enabling a precise 1D mapping of the conformational axis.
+1. **Latent Representation**: Yes. The GNN-based TAE achieves a VAMP-2 score of **2.97** (vs. **1.01** for direct 2D PCA), capturing the slow conformational dynamics that linear projections miss. Notably, it matches the PCA-50 linear VAC ceiling (**2.99**), confirming the graph representation extracts equivalent dynamical information with a nonlinear architecture.
 2. **Generative Ensembles**: Yes. The conditional diffusion model generates state-specific ensembles that are physically valid and match MD statistics within 5%. 
 3. **Cryptic Sites**: The analysis revealed that the dominant binding pocket is spatially conserved across states (displacement < 2.3\u00c5). However, the **intermediate state** exhibited notable pocket occlusion (lowest frequency & druggability score), confirming that transition states may naturally obscure binding sites during domain motion. No entirely new "cryptic" pockets were found, but the dynamic narrowing of the existing pocket was explicitly captured.
 
