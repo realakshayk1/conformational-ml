@@ -151,13 +151,11 @@ def main():
     
     # PCA Baseline
     pca_path = os.path.join(baseline_dir, 'pca2_train.npy')
-    if not os.path.exists(pca_path):
-        print(f"File not found: {pca_path}. Creating dummy baseline data.")
-        os.makedirs(baseline_dir, exist_ok=True)
-        pca_traj = np.random.randn(1000, 2) * 5
-        np.save(pca_path, pca_traj)
-    pca_traj = np.load(pca_path)
-    plot_free_energy_landscape(pca_traj, os.path.join(figures_dir, 'landscape_pca.png'))
+    if os.path.exists(pca_path):
+        pca_traj = np.load(pca_path)
+        plot_free_energy_landscape(pca_traj, os.path.join(figures_dir, 'landscape_pca.png'))
+    else:
+        print(f"Skipping PCA landscape: {pca_path} not found. Run scripts/train_baselines.py first.")
     
     # 4. Summary Table
     print("\n" + "="*60)

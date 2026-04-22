@@ -70,7 +70,7 @@ The pipeline uses **Adenylate Kinase (AdK)** as a model system, well-known for i
 ## Results Summary (v1.0-phase2)
 
 ### Representation & Dynamics
-- **VAMP-2 Score**: **2.97** (theoretical max 3.0 for a 2D representation), outperforming the naive linear PCA-2D baseline (**1.01**) and matching the PCA-50→linear-VAC ceiling (**2.99**) with a learned nonlinear graph representation.
+- **VAMP-2 Score**: **2.97** (theoretical max 3.0 for a 2D representation), matching the PCA-50→linear-VAC ceiling (**2.99**) and marginally outperforming direct PCA-2D (**2.92**) — confirming the graph representation captures the dominant slow modes comparably to optimal linear methods.
 - **Markovian Validation**: Chapman-Kolmogorov (CK) test (BayesianMSM, lag=5, k=3 states) shows 7/15 diagonal entries outside 95% CI — the 3-state discretization is not fully Markovian at this lag. A finer state decomposition or longer lag time is needed for a passing CK test.
 - **State Axis**: Latent space captures the full closed-to-open conformational transition axis, validated by VAMP-2 scoring against linear baselines.
 
@@ -91,7 +91,7 @@ We evaluated the ability to detect binding pockets across states in both generat
 
 Based on the Phase 2 results, we can answer our core scientific questions:
 
-1. **Latent Representation**: Yes. The GNN-based TAE achieves a VAMP-2 score of **2.97** (vs. **1.01** for direct 2D PCA), capturing the slow conformational dynamics that linear projections miss. Notably, it matches the PCA-50 linear VAC ceiling (**2.99**), confirming the graph representation extracts equivalent dynamical information with a nonlinear architecture.
+1. **Latent Representation**: Yes. The GNN-based TAE achieves a VAMP-2 score of **2.97** — matching the PCA-50 linear VAC ceiling (**2.99**) and marginally outperforming direct PCA-2D (**2.92**). The result confirms the learned graph representation captures the dominant slow conformational modes on par with optimal linear methods, with the advantage of a nonlinear, structure-aware latent space.
 2. **Generative Ensembles**: Yes. The conditional diffusion model generates state-specific ensembles with Rg values within 5–7% of real MD distributions. Geometric quality is guidance-scale dependent; lower guidance scales produce more physically plausible bond geometries at the cost of reduced state conditioning. 
 3. **Cryptic Sites**: The analysis revealed that the dominant binding pocket is spatially conserved across states (displacement < 2.3\u00c5). However, the **intermediate state** exhibited notable pocket occlusion (lowest frequency & druggability score), confirming that transition states may naturally obscure binding sites during domain motion. No entirely new "cryptic" pockets were found, but the dynamic narrowing of the existing pocket was explicitly captured.
 
