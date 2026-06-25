@@ -1,0 +1,51 @@
+# T4L L99A excited-state collective variable (CV) — PRE-REGISTERED before any generator output.
+# Basis: Bouvignies & Kay, Nature 477:111 (2011), PDB 2LC9. The 3%-populated excited state
+# differs from the ground state by straightening of helices F and G into a single helix near
+# the engineered L99A cavity, with Phe114 rotating into the cavity.
+#
+# Do NOT tune these values against generator samples. Calibrate ONLY on the reference
+# structures (2LC9 / 1L83 / 3DMV / 3DMX) — they must land in the expected basins.
+
+target: t4l_l99a
+n_residues: 164
+
+ground_truth:
+  excited_state:   data/t4l/structures/2LC9.pdb   # NMR ensemble (10 models), 3% population
+  ground_state:    data/t4l/structures/1L83.pdb   # L99A ground/closed
+  mimics:                                          # excited-state-mimic mutants (independent cross-check)
+    - data/t4l/structures/3DMV.pdb
+    - data/t4l/structures/3DMX.pdb
+  ligand_bound:    data/t4l/structures/4W52.pdb    # benzene-bound (cavity-open) sanity anchor
+
+experimental_excited_population: 0.03              # the number generator recall is compared against
+
+# ---- Primary CV: F/G-helix conformation ----
+# A conformer is "excited-state-like" if its F/G-region backbone is closer to 2LC9 than to 1L83.
+primary_cv:
+  name: fg_helix_rmsd
+  # Region where the F->G straightening concentrates (Gly113-Asn116 junction + flanking turns).
+  fg_region_residues: [108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118]
+  # Superpose on the stable core (everything EXCEPT the mobile F/G region) before measuring.
+  alignment_core_exclude: [105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123]
+  atoms: CA
+  # Decision rule (threshold calibrated in Phase A1 from references, then frozen):
+  #   excited-state-like  <=>  rmsd_to_2lc9 < rmsd_to_1l83 - margin
+  margin_angstrom: null   # set in A1 from the 2LC9/1L83/3DMV separation, then do not change
+
+# ---- Secondary CVs (all-atom conformers only, e.g. AlphaFlow / rebuilt) ----
+secondary_cv:
+  phe114_rotamer:
+    residue: 114
+    resname: PHE
+    measure: chi1            # ring rotated into cavity in the excited state
+  cavity_volume:
+    tool: fpocket            # restricted to the L99A cavity neighborhood
+    cavity_residues: [78, 84, 87, 99, 102, 111, 118, 121, 133, 153]  # hydrophobic cavity lining (verify vs 1L83)
+
+reporting:
+  headline_metric: fraction_excited_state_like   # compare to experimental_excited_population (0.03)
+  also_report:
+    - min_rmsd_to_2lc9_fg_region                  # does the generator get NEAR the rare state at all?
+    - ground_basin_recall                         # sanity: it should reproduce 1L83
+    - geometry_validity_rate                      # bond_geometry_check; gates all claims
+  seeds: 3
