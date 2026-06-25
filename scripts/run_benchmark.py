@@ -78,15 +78,28 @@ def aggregate(records, label, exp_pop):
     }
 
 
+def _pick_pdbs(d):
+    """Prefer a canonical samples.pdb; otherwise all *.pdb except a topology.pdb
+    (BioEmu writes topology.pdb alongside the trajectory — it is not a sample)."""
+    canonical = os.path.join(d, "samples.pdb")
+    if os.path.exists(canonical):
+        return [canonical]
+    return [p for p in sorted(glob.glob(os.path.join(d, "*.pdb")))
+            if os.path.basename(p) != "topology.pdb"]
+
+
 def collect_pdbs(generated_dir):
     seeds = {}
-    pdbs = sorted(glob.glob(os.path.join(generated_dir, "*.pdb")))
-    if pdbs:
-        seeds["_all"] = pdbs
-    for sub in sorted(glob.glob(os.path.join(generated_dir, "*/"))):
-        sp = sorted(glob.glob(os.path.join(sub, "*.pdb")))
+    top = _pick_pdbs(generated_dir)
+    if top:
+        seeds["_all"] = top
+    for sub in sorted(glob.glob(os.path.join(generated_dir, "*", ""))):
+        sub = os.path.normpath(sub)                  # OS-robust: strip trailing sep (\ or /)
+        if not os.path.isdir(sub):
+            continue
+        sp = _pick_pdbs(sub)
         if sp:
-            seeds[os.path.basename(sub.rstrip("/"))] = sp
+            seeds[os.path.basename(sub)] = sp
     return seeds
 
 
@@ -96,6 +109,8 @@ def main():
     ap.add_argument("--config", required=True)
     ap.add_argument("--label", default="generator")
     ap.add_argument("--out", required=True)
+    ap.add_argument("--records-out", default=None,
+                    help="optional path to dump per-conformer rows (for plotting)")
     args = ap.parse_args()
 
     cv = StateContrastCV.from_config(args.config)
@@ -131,6 +146,11 @@ def main():
     os.makedirs(os.path.dirname(args.out), exist_ok=True)
     with open(args.out, "w") as fh:
         json.dump(summary, fh, indent=2)
+
+    if args.records_out:
+        os.makedirs(os.path.dirname(args.records_out) or ".", exist_ok=True)
+        with open(args.records_out, "w") as fh:
+            json.dump(all_records, fh)
 
     o = summary["overall"]
     exp_str = f"  (experimental ~{exp_pop*100:.0f}%)" if exp_pop else "  (no published population; recall)"
