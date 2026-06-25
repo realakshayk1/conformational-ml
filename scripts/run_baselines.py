@@ -35,54 +35,39 @@ def compute_vac_baseline(baseline_dir, lag_times, dim=2):
     return results
 
 def check_ck_test_pass(cktest, lag_time):
-    """
-    Explicitly checks if all estimated timescales (probabilities) fall within the confidence intervals
-    of the predicted timescales at the specified lag time.
+    """Check CK test pass/fail using diagonal self-transition probabilities with 95% CI.
+
+    The CK test compares, for each macrostate k, the directly-estimated self-transition
+    probability against the value propagated from the base model. Those are the DIAGONAL
+    entries [k, k] of each transition matrix — indexing a whole row [k] (as the previous
+    version did) compares an array against scalar bounds and is incorrect.
     """
     if cktest is None:
         return "FAIL (No MSM constructed)"
 
     try:
-        total_timescales = 0
         outside_bounds = 0
-        
-        # deeptime ck_test object has .estimates, .predictions, .estimates_samples
-        n_lags = len(cktest.lagtimes)
-        n_sets = 3
-        
-        # lag_idx corresponding to lag_time base
-        lag_idx = 0
-        for i, l in enumerate(cktest.lagtimes):
-            if l == lag_time:
-                lag_idx = i
-                break
-                
-        for k in range(n_sets):
-            # For a given state k, get the transition probability at lag_idx
-            # deeptime estimates is typically list of arrays: cktest.estimates[lag_idx][k]
-            est = cktest.estimates[lag_idx][k]
-            pred = cktest.predictions[lag_idx][k]
-            
-            # Fetch samples to get confidence bounds
-            if hasattr(cktest, 'estimates_samples') and cktest.estimates_samples is not None:
-                samples = cktest.estimates_samples[lag_idx][:, k]
+        total = 0
+
+        for lag_idx, lag in enumerate(cktest.lagtimes):
+            if lag == 0:
+                continue
+            for k in range(cktest.n_components):
+                pred = float(np.real(cktest.predictions[lag_idx][k, k]))
+                samples = [float(s[k, k]) for s in cktest.estimates_samples[lag_idx]]
                 lower = np.percentile(samples, 2.5)
                 upper = np.percentile(samples, 97.5)
-            else:
-                lower = est * 0.95
-                upper = est * 1.05
-            
-            total_timescales += 1
-            if not (lower <= pred <= upper):
-                outside_bounds += 1
-                
+                total += 1
+                if not (lower <= pred <= upper):
+                    outside_bounds += 1
+
         if outside_bounds == 0:
-            return f"PASS (all timescales within bounds at lag={lag_time})"
+            return f"PASS (all {total} diagonal entries within 95% CI)"
         else:
-            return f"FAIL ({outside_bounds} timescales outside bounds at lag={lag_time})"
-            
+            return f"FAIL ({outside_bounds}/{total} diagonal entries outside 95% CI)"
+
     except Exception as e:
-        return f"FAIL (Error extracting CK test bounds: {e})"
+        return f"FAIL (Error: {e})"
 
 def main():
     base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -112,12 +97,11 @@ def main():
     for tau in taus:
         file_path = os.path.join(latent_dir, f'tae_tau{tau}.npy')
         if not os.path.exists(file_path):
-            print(f"File not found: {file_path}. Creating dummy data for testing.")
-            # Create dummy data if it doesn't exist for the sake of the script running
-            os.makedirs(latent_dir, exist_ok=True)
-            traj = np.random.randn(1000, 2)
-            np.save(file_path, traj)
-            
+            raise FileNotFoundError(
+                f"Latent file not found: {file_path}. Run train_baselines.py first to "
+                f"produce real latents. (Never substitute random data — a VAMP-2 of ~1.0 "
+                f"on noise is meaningless and has previously been mistaken for a baseline.)"
+            )
         traj = np.load(file_path)
         # run_vamp2 expects a list of trajectories
         scores = run_vamp2([traj], lag_times)
@@ -173,10 +157,10 @@ def main():
     # PCA Baseline
     pca_path = os.path.join(baseline_dir, 'pca2_train.npy')
     if not os.path.exists(pca_path):
-        print(f"File not found: {pca_path}. Creating dummy baseline data.")
-        os.makedirs(baseline_dir, exist_ok=True)
-        pca_traj = np.random.randn(1000, 2) * 5
-        np.save(pca_path, pca_traj)
+        raise FileNotFoundError(
+            f"PCA baseline not found: {pca_path}. Run train_baselines.py to compute the "
+            f"real PCA projection. (Do not substitute random data for the baseline.)"
+        )
     pca_traj = np.load(pca_path)
     plot_free_energy_landscape(pca_traj, os.path.join(figures_dir, 'landscape_pca.png'))
     
