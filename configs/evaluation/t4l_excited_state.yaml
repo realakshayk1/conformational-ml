@@ -30,7 +30,23 @@ primary_cv:
   atoms: CA
   # Decision rule (threshold calibrated in Phase A1 from references, then frozen):
   #   excited-state-like  <=>  rmsd_to_2lc9 < rmsd_to_1l83 - margin
-  margin_angstrom: null   # set in A1 from the 2LC9/1L83/3DMV separation, then do not change
+  margin_angstrom: 1.0    # FROZEN 2026-06-25 (Phase A1). Do not retune against generator output.
+
+# ---- Phase A1 calibration record (reference structures only) ----
+# After superposing on the stable core (excl. 105-123), F/G-region (108-118) CA-RMSD:
+#   structure       rmsd->2LC9  rmsd->1L83   delta(=1L83-2LC9)   basin
+#   2LC9 (excited)       0.00       4.44           +4.44          EXCITED
+#   1L83 (ground)        3.33       0.00           -3.33          ground
+#   3DMV (mutant)        3.53       0.35           -3.18          ground*
+#   3DMX (mutant)        3.45       0.25           -3.20          ground*
+#   4W52 (benzene)       3.74       0.52           -3.22          ground
+# Specificity check (2LC9 vs 1L83, same core alignment): F/G region 4.21 A vs
+#   control helices 0.25-0.35 A, whole-protein 1.26 A -> the CV is localized to F/G,
+#   not a global NMR-vs-crystal offset.
+# *NOTE: 3DMV/3DMX adopt a GROUND-like F/G conformation in these crystals, so they are
+#  NOT usable as excited cross-checks. The benchmark rests on 2LC9 (solution excited
+#  state) vs 1L83 (ground). margin=1.0 A sits well above all ground deltas (<=-3.18)
+#  and far below the excited delta (+4.44).
 
 # ---- Secondary CVs (all-atom conformers only, e.g. AlphaFlow / rebuilt) ----
 secondary_cv:
