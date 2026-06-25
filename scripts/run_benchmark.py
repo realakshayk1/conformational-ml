@@ -50,8 +50,13 @@ def score_pdb(cv: StateContrastCV, pdb_path: str):
             "delta": r.delta,
             "target_like": r.target_like,
             "mean_ca_distance": geom["mean_ca_distance"],
-            "pct_bonds_within_tol": geom["pct_within_tolerance"],
-            "geometry_valid": bool(geom["pct_within_tolerance"] >= 90.0),
+            "mad_from_ideal": geom["mad_from_ideal"],
+            "pct_gross_violations": geom["pct_gross_violations"],
+            # Physically-motivated gate: ensemble mean near 3.8 Å AND essentially no
+            # grossly broken bonds. (Not the old hard +/-0.1 A window, which rejects
+            # valid backbones whose natural Ca-Ca spread is sd ~0.1 A.)
+            "geometry_valid": bool(3.6 <= geom["mean_ca_distance"] <= 4.0
+                                   and geom["pct_gross_violations"] <= 1.0),
             "rg": radius_of_gyration(ca),
         })
     return out
