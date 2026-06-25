@@ -4,64 +4,43 @@
 # the engineered L99A cavity, with Phe114 rotating into the cavity.
 #
 # Do NOT tune these values against generator samples. Calibrate ONLY on the reference
-# structures (2LC9 / 1L83 / 3DMV / 3DMX) — they must land in the expected basins.
+# structures — they must land in the expected basins.
 
 target: t4l_l99a
 n_residues: 164
+experimental_target_population: 0.03   # excited-state population the recall is compared against
 
-ground_truth:
-  excited_state:   data/t4l/structures/2LC9.pdb   # NMR ensemble (10 models), 3% population
-  ground_state:    data/t4l/structures/1L83.pdb   # L99A ground/closed
-  mimics:                                          # excited-state-mimic mutants (independent cross-check)
-    - data/t4l/structures/3DMV.pdb
-    - data/t4l/structures/3DMX.pdb
-  ligand_bound:    data/t4l/structures/4W52.pdb    # benzene-bound (cavity-open) sanity anchor
-
-experimental_excited_population: 0.03              # the number generator recall is compared against
-
-# ---- Primary CV: F/G-helix conformation ----
-# A conformer is "excited-state-like" if its F/G-region backbone is closer to 2LC9 than to 1L83.
-primary_cv:
-  name: fg_helix_rmsd
-  # Region where the F->G straightening concentrates (Gly113-Asn116 junction + flanking turns).
-  fg_region_residues: [108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118]
+# ---- Primary CV: state contrast on the F/G-helix region ----
+# target-state-like <=> rmsd_to_target < rmsd_to_ground - margin
+contrast:
+  target_state_pdbs: [data/t4l/structures/2LC9.pdb]   # excited (NMR ensemble, 10 models)
+  ground_state_pdbs: [data/t4l/structures/1L83.pdb]   # ground/closed
+  region_residues: [108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118]
   # Superpose on the stable core (everything EXCEPT the mobile F/G region) before measuring.
   alignment_core_exclude: [105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123]
-  atoms: CA
-  # Decision rule (threshold calibrated in Phase A1 from references, then frozen):
-  #   excited-state-like  <=>  rmsd_to_2lc9 < rmsd_to_1l83 - margin
   margin_angstrom: 1.0    # FROZEN 2026-06-25 (Phase A1). Do not retune against generator output.
 
 # ---- Phase A1 calibration record (reference structures only) ----
 # After superposing on the stable core (excl. 105-123), F/G-region (108-118) CA-RMSD:
-#   structure       rmsd->2LC9  rmsd->1L83   delta(=1L83-2LC9)   basin
-#   2LC9 (excited)       0.00       4.44           +4.44          EXCITED
-#   1L83 (ground)        3.33       0.00           -3.33          ground
-#   3DMV (mutant)        3.53       0.35           -3.18          ground*
-#   3DMX (mutant)        3.45       0.25           -3.20          ground*
-#   4W52 (benzene)       3.74       0.52           -3.22          ground
+#   structure       rmsd->2LC9  rmsd->1L83   delta(=ground-target)   basin
+#   2LC9 (excited)       0.00       4.44           +4.44             TARGET (excited)
+#   1L83 (ground)        3.33       0.00           -3.33             ground
+#   3DMV (mutant)        3.53       0.35           -3.18             ground*
+#   3DMX (mutant)        3.45       0.25           -3.20             ground*
+#   4W52 (benzene)       3.74       0.52           -3.22             ground
 # Specificity check (2LC9 vs 1L83, same core alignment): F/G region 4.21 A vs
-#   control helices 0.25-0.35 A, whole-protein 1.26 A -> the CV is localized to F/G,
-#   not a global NMR-vs-crystal offset.
+#   control helices 0.25-0.35 A, whole-protein 1.26 A -> the CV is localized to F/G.
 # *NOTE: 3DMV/3DMX adopt a GROUND-like F/G conformation in these crystals, so they are
-#  NOT usable as excited cross-checks. The benchmark rests on 2LC9 (solution excited
-#  state) vs 1L83 (ground). margin=1.0 A sits well above all ground deltas (<=-3.18)
+#  NOT usable as excited cross-checks. margin=1.0 A sits above all ground deltas (<=-3.18)
 #  and far below the excited delta (+4.44).
 
 # ---- Secondary CVs (all-atom conformers only, e.g. AlphaFlow / rebuilt) ----
 secondary_cv:
-  phe114_rotamer:
-    residue: 114
-    resname: PHE
-    measure: chi1            # ring rotated into cavity in the excited state
+  phe114_rotamer: {residue: 114, resname: PHE, measure: chi1}
   cavity_volume:
-    tool: fpocket            # restricted to the L99A cavity neighborhood
-    cavity_residues: [78, 84, 87, 99, 102, 111, 118, 121, 133, 153]  # hydrophobic cavity lining (verify vs 1L83)
+    tool: fpocket
+    cavity_residues: [78, 84, 87, 99, 102, 111, 118, 121, 133, 153]
 
 reporting:
-  headline_metric: fraction_excited_state_like   # compare to experimental_excited_population (0.03)
-  also_report:
-    - min_rmsd_to_2lc9_fg_region                  # does the generator get NEAR the rare state at all?
-    - ground_basin_recall                         # sanity: it should reproduce 1L83
-    - geometry_validity_rate                      # bond_geometry_check; gates all claims
+  headline_metric: fraction_target_state_like   # compare to experimental_target_population (0.03)
   seeds: 3
