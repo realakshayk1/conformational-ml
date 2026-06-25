@@ -1,0 +1,47 @@
+# KRAS G12D switch-II-pocket (SII-P) open-state CV — PRE-REGISTERED before any generator output.
+# The SII-P is the druggable cleft opened by MRTX1133 between switch II and helix alpha3.
+# Target (open) = MRTX1133-bound complexes (GDP state). Ground (closed) = GDP apo.
+# Nucleotide state is matched (both GDP) so the contrast isolates switch-II pocket opening,
+# not a GTP/GDP difference. (4DSN is a GppNHp/GTP-analog structure and is deliberately NOT
+# used — its switch regions reflect the active state and confound the comparison.)
+
+target: kras_g12d
+n_residues: 169
+
+# ---- Primary CV: state contrast on the switch-II region ----
+# target-state-like <=> rmsd_to_target < rmsd_to_ground - margin
+contrast:
+  target_state_pdbs:                                  # switch-II pocket OPEN (MRTX1133-bound, GDP)
+    - data/kras/structures/7RPZ.pdb
+    - data/kras/structures/8DNI.pdb
+  ground_state_pdbs: [data/kras/structures/6WS4.pdb]  # GDP apo, switch-II pocket CLOSED
+  region_residues: [60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76]
+  # Superpose on the stable G-domain core: exclude switch I (25-40), switch II + flank (57-79),
+  # the C-terminal tail / HVR (>=167), and residue 0.
+  alignment_core_exclude: [0, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
+                           57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73,
+                           74, 75, 76, 77, 78, 79,
+                           167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180]
+  margin_angstrom: 1.5    # FROZEN 2026-06-25 (Phase B). Do not retune against generator output.
+
+# region annotations (for reference / pocket analysis)
+regions:
+  p_loop: [10, 17]
+  switch_i: [25, 40]
+  switch_ii: [60, 76]
+  alpha3: [87, 104]
+
+# ---- Phase B calibration record (reference structures only) ----
+# Switch-II (60-76) CA-RMSD after core alignment, with GDP-matched references:
+#   structure          rmsd->target  rmsd->ground   delta(=ground-target)   basin
+#   7RPZ (SII-open)         0.00          5.04            +5.04              TARGET (open)
+#   8DNI (SII-open)         0.00          5.06            +5.06              TARGET (open)
+#   6WS4 (GDP apo)          5.04          0.00            -5.04              ground (closed)
+# Specificity (7RPZ vs 6WS4): switch-II 5.04 A vs switch-I 0.78 A, controls 0.26-0.99 A
+#   -> the CV is localized to switch II; the GTP/GDP confound is removed (switch I stable).
+# Open references agree (7RPZ vs 8DNI ~1.75 A in switch II); margin=1.5 A sits between the
+# +5.0 target deltas and the -5.0 ground delta with cushion for the open-open spread.
+
+reporting:
+  headline_metric: fraction_target_state_like   # recall of the SII-open state (no canonical population)
+  seeds: 3

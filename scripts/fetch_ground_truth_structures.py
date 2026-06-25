@@ -16,10 +16,11 @@ STRUCTURES = {
         "4W52": "benzene-bound (cavity-open sanity anchor)",
     },
     "kras": {
-        # Phase B — KRAS G12D switch-II pocket ground truth.
-        "7RPZ": "MRTX1133-bound (switch-II pocket OPEN)",
-        "8DNI": "MRTX1133-bound (switch-II pocket OPEN)",
-        "4DSN": "apo GDP-bound (switch-II pocket CLOSED reference)",
+        # Phase B — KRAS G12D switch-II pocket ground truth (nucleotide state matched: all GDP).
+        "7RPZ": "MRTX1133-bound, GDP (switch-II pocket OPEN; target state)",
+        "8DNI": "MRTX1133-bound, GDP (switch-II pocket OPEN; target state)",
+        "6WS4": "GDP apo, G12D/K104Q (switch-II pocket CLOSED; ground reference)",
+        # 4DSN deliberately excluded: GppNHp/GTP-analog state confounds the switch-II contrast.
     },
 }
 
